@@ -1,32 +1,42 @@
 import { useEffect, useState } from "react";
 import { chatRequest } from "../src/chat.lib";
+import ChatBubble from "./bubble";
 
-function Chat() {
-    const url = process.env.NEXT_PUBLIC_CHAT_URL;
-    const [response, setResponse] = useState<string | string[]>();
+function SendChat({model}) {
+    const [sent, setSent] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [prompt, setPrompt] = useState();
 
-    // const [model, setModel] = useState("")
-
-
-    const requestChatCompletetion = async() => {
-        const response = await chatRequest("gpt-3.5-turbo", message );
+    const request = async() => {
+        setSent(true);
+        const response = await chatRequest(model, prompt);
 
         if (response.resCode === "200") {
-            setResponse(response.dataRes);
+            setSuccess(true)
         }
-    };
+    }
 
-    useEffect(() => {
-        requestChatCompletetion();
-    }, []);
-    
-    return (
+    const onChange = (e) => setPrompt(e.target.value);
+
+
+ 
+    if (sent === true) {
+        return (
+            <button className="btn loading">Waiting For chatGPT</button>
+        )
+    }
+
+    if (success) {
+        <ChatBubble message={prompt}></ChatBubble>
+    }
+
+    return(
         <div>
-            {response.map((item) => {
-                return(
-                    <div></div>
-                )
-            })}
+            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+            <button className="btn" style={{marginLeft: "2%"}} onClick={(event) => {request()}}>확인</button>
         </div>
     )
+
 }
+
+export default SendChat;
