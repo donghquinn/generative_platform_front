@@ -35,13 +35,13 @@ function SendChat({model}) {
 
     return(
         <div>
-        <div>
-            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-            <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
-        </div>
-        <div>
-            <ChatBubble message={prompt} response={response} success={success}></ChatBubble>
-        </div>
+            <div>
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+                <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+            </div>
+            <div>
+                <ChatBubble message={prompt} response={response} success={success}></ChatBubble>
+            </div>
         </div>
     )
 
