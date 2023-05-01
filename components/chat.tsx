@@ -1,15 +1,21 @@
 import { useState } from "react";
-import { chatRequest } from "../src/chat.lib";
-import ChatBubble from "./bubble";
 import { useRecoilState } from "recoil";
-import { requestSuccess, responseRecoil } from "../src/chat.recoil";
+import { chatRequest } from "../src/chat.lib";
+import { errMsgRecoil, requestSuccess, responseRecoil } from "../src/chat.recoil";
+import ChatBubble from "./bubble";
+import ErrorBubble from "./error/bubble.error";
 
 function SendChat({model}) {
+
+
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(requestSuccess);
-    const [prompt, setPrompt] = useState();
-    const [ response, setResponse] = useRecoilState(responseRecoil);
 
+    const [prompt, setPrompt] = useState("");
+    const [response, setResponse] = useRecoilState(responseRecoil);
+
+    const [ errors, setErrors ] = useState(false);
+    const [errMsg, setErrmsg] = useRecoilState(errMsgRecoil);
     
 
     const request = async() => {
@@ -17,35 +23,80 @@ function SendChat({model}) {
 
         const response = await chatRequest(model, prompt);
 
+        console.log(response.resCode);
+        // console.log(response.dataRes[0].response);
+
         if (response.resCode === "200") {
-            setSuccess(true)
-            setResponse(response.dataRes);
+            setSuccess(true);
+            setSent(false);
+            setResponse(response.dataRes.result);
+          
+            setErrors(false);
+        } 
+        
+        if (response.resCode === "500") {
+            setSuccess(false);
+            setSent(false);
+            setErrmsg(response.errMsg);
+       
+            setErrors(true);
         }
     }
 
     const onChange = (e) => setPrompt(e.target.value);
 
 
- 
-    if (sent === true) {
+    if (sent) {
         return (
-            <button className="btn loading">Waiting For chatGPT</button>
+            <div>
+                <button className="btn loading">Waiting For chatGPT</button>
+            </div>
         )
-    }
+    };
 
-    return(
-        <div>
+    // if (success) {
+    //     <div>
+    //         a
+    //         <div>
+    //             <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+    //             <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+    //         </div>
+    //         a
+         
+    //     </div>
+    // } ;
+    
+    if (errors) {
+        return(
+            <div>
             <div>
                 <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
                 <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
             </div>
             <div>
-                <ChatBubble message={prompt} response={response} success={success}></ChatBubble>
+                <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
             </div>
         </div>
-    )
+        )
+    };
 
-    
+
+        return (
+            <div>
+                
+                <div>
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+                    <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                </div>
+
+                <div style={{marginTop: "3%"}}>
+                
+                <ChatBubble message={prompt} response={response}></ChatBubble>
+            </div>
+            </div>
+        )
+ 
+   
 }
 
 export default SendChat;

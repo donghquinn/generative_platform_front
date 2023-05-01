@@ -1,14 +1,37 @@
 interface ChatReseponse {
     resCode: string;
-    dataRes: string[] | null;
-    errMsg: string | string[] | null;
+    dataRes: ResultArray;
+    errMsg: string[] | null;
 };
 
+interface ResultArray {
+    result: Array<string | undefined> | null;
+}
 
-export const chatRequest = async(model: string,content: string, name?: string, temperature?: number, topP?: number, number?: number, stream?: boolean, stop?: string | Array<string>, maxTokens?: number, presencePenalty?: number, frequencyPenalty?: number, user?: string) => {
+// interface ChatResponse {
+//         model: string;
+//         content: string;
+//         role: string;
+//         name?: string;
+//         temperature?: number;
+//         topP?: number;
+//         number?: number;
+//         stream?: boolean;
+//         stop?: string | Array<string>;
+//         maxTokens?: number;
+//         presencePenalty?: number;
+//         frequencyPenalty?: number;
+//         user?: string;
+//         response?: string
+//         created: string;
+// }
+
+
+export const chatRequest = async(model: string, content: string, name?: string, temperature?: number, topP?: number, number?: number, stream?: boolean, stop?: string | Array<string>, maxTokens?: number, presencePenalty?: number, frequencyPenalty?: number, user?: string) => {
     const url = process.env.NEXT_PUBLIC_CHAT_URL;
 
     const options = {
+        headers: {"Content-Type": "application/json"},
         method: "POST",
         body: JSON.stringify({
             model,
@@ -27,6 +50,9 @@ export const chatRequest = async(model: string,content: string, name?: string, t
     };
 
     const response = await (await fetch(url, options)).json() as ChatReseponse;
+
+    console.log(response.dataRes.result);
+
 
     return response;
 }

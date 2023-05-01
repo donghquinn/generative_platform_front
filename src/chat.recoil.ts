@@ -7,7 +7,12 @@ export const chatRecoil = atom({
 
 export const responseRecoil = atom ({
     key: "responseRecoil",
-    default: [""],
+    default: [],
+});
+
+export const errMsgRecoil = atom ({
+    key: "errMsgRecoil",
+    default: [] || "",
 });
 
 export const requestSuccess = atom({
