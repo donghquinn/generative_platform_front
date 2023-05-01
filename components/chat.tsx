@@ -40,7 +40,7 @@ function SendChat({model}) {
             <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
         </div>
         <div>
-            <ChatBubble message={prompt}></ChatBubble>
+            <ChatBubble message={prompt} response={response} success={success}></ChatBubble>
         </div>
         </div>
     )
