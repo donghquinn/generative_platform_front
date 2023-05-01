@@ -28,7 +28,6 @@ function Menu () {
                 <Link href="/img">
                     <p className="btn btn-ghost rounded-btn">{item}</p>
                 </Link>
-            
             </div>
             )
         }

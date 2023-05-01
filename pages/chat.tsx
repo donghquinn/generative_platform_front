@@ -11,9 +11,6 @@ function Chat() {
 
     const [model, setModel] = useState<string>();
 
-
-
-  
     return (
         <div>
         <div className="flex flex-col space-y-2 px-2">
