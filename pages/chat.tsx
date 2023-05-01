@@ -7,7 +7,7 @@ function Chat() {
     // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
     const modelArray = ["gpt-3.5-turbo"];
 
-    const [showDropdown, setShowDropDown] = useState(false);
+    // const [showDropdown, setShowDropDown] = useState(false);
 
     const [model, setModel] = useState<string>();
 
@@ -24,13 +24,16 @@ function Chat() {
                     {modelArray.map((item) => {
                         return (
                             <div key={item}>
-                                <li onClick={(event) => { setModel(item)}}>
-                                    <a>{item}</a></li>
+                                <li onClick={(event) => { 
+                                    setModel(item)
+                                    }}>
+                                <a>{item}</a></li>
                             </div>
                         )
                     })}
                 </ul>
             </div>
+
             </div>
                 <div className="flex flex-col space-y-2 px-2">
                     <div className="flex justify-center">

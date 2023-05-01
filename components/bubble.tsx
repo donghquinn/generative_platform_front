@@ -4,7 +4,6 @@ function ChatBubble({message, response}) {
 
       return (
         <div>
-            a
             <div className="chat chat-start">
                 <div className="chat-bubble">{message}</div>
             </div>

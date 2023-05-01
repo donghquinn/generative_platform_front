@@ -31,7 +31,8 @@ export const chatRequest = async(model: string, content: string, name?: string, 
     const url = process.env.NEXT_PUBLIC_CHAT_URL;
 
     const options = {
-        headers: {"Content-Type": "application/json", key: process.env.NEXT_PUBLIC_KEY!},
+        headers: {"Content-Type": "application/json", 
+        key: process.env.NEXT_PUBLIC_KEY!},
         method: "POST",
         body: JSON.stringify({
             model,
@@ -51,7 +52,7 @@ export const chatRequest = async(model: string, content: string, name?: string, 
 
     const response = await (await fetch(url, options)).json() as ChatReseponse;
 
-    console.log(response.dataRes.result);
+    // console.log);
 
 
     return response;
