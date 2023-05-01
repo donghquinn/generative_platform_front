@@ -33,12 +33,15 @@ function Chat() {
                         )
                     })}
                 </ul>
+            </div>
+            </div>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <SendChat model={model}></SendChat>
+                    </div>
                 </div>
             </div>
-            <SendChat model={model}></SendChat>
-            </div>
-            </div>
-
+        </div>
     )
 }
 

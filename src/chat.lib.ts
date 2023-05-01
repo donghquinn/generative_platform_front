@@ -9,6 +9,7 @@ export const chatRequest = async(model: string,content: string, name?: string, t
     const url = process.env.NEXT_PUBLIC_CHAT_URL;
 
     const options = {
+        method: "POST",
         body: JSON.stringify({
             model,
             content, 
