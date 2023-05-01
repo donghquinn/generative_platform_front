@@ -1,5 +1,3 @@
-import { useRecoilState } from "recoil";
-import { responseRecoil } from "../src/chat.recoil";
 
 function ChatBubble({message, response}) {
     // const [response, setResponse] = useRecoilState(responseRecoil);

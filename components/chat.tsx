@@ -6,8 +6,6 @@ import ChatBubble from "./bubble";
 import ErrorBubble from "./error/bubble.error";
 
 function SendChat({model}) {
-
-
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(requestSuccess);
 
