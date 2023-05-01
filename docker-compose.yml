@@ -9,8 +9,6 @@ services:
       - .env
     expose:
       - 5543
-    volumes:
-      - ./logs:/home/node/src/logs
     networks:
       - proxy
 networks:
