@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: gpt
+    env_file:
+      - .env
+    expose:
+      - 5543
+    volumes:
+      - ./logs:/home/node/src/logs
+    networks:
+      - proxy
+networks:
+  proxy:
+    external: true
