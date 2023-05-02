@@ -29,11 +29,12 @@ function Img() {
                  {sizeArray.map((item) => {
                      return (
                          <div key={item}>
-                             <li onClick={(event) => { 
+                             <li>
+                                <a onClick={(event) => { 
                                  setSize(item)
                                  setMent(item)
-                                 }}>
-                             <a>{item}</a></li>
+                                 }}>{item}</a>
+                             </li>
                          </div>
                      )
                  })}
@@ -49,11 +50,11 @@ function Img() {
                  {imgNumberArray.map((item) => {
                      return (
                          <div key={item}>
-                             <li onClick={(event) => { 
+                             <li >
+                             <a onClick={(event) => { 
                                  setNumber(item)
                                  setImgMent(item)
-                                 }}>
-                             <a>{item}</a></li>
+                                 }}>{item}</a></li>
                          </div>
                      )
                  })}

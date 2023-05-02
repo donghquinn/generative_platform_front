@@ -24,12 +24,12 @@ function Chat() {
                     {modelArray.map((item) => {
                         return (
                             <div key={item}>
-                                <li onClick={(event) => { 
-                                    setModel(item)
-                                    setMent(item)
-                                    
-                                    }}>
-                                <a>{item}</a></li>
+                                <li >
+                                    <a onClick={(event) => { 
+                                        setModel(item)
+                                        setMent(item)
+                                        }}>{item}</a>
+                                </li>
                             </div>
                         )
                     })}
