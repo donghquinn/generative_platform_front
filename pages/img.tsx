@@ -10,17 +10,17 @@ function Img() {
  const imgNumberArray = ["1", "2", "3","4", "5", "6", "7", "8", "9", "10"];
  // const [showDropdown, setShowDropDown] = useState(false);
 
- const [size, setSize] = useRecoilState(imageSizeRecoil);
- const [ment, setMent] = useState("Select Size")
+ const [size, setSize] = useState("256x256");
+ const [ment, setMent] = useState("Select Size");
 
- const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
+ const [imgNumber, setNumber] = useState("1");
  const [imgMent, setImgMent] = useState("Select Number");
 
  return (
      <div>
      <div className="flex flex-col space-y-2 px-2">
      <div className="flex justify-center">
-         <div className="dropdown" style={{marginBottom: "5%", marginTop:"5%"}}>
+         <div className="dropdown" style={{marginBottom: "1%", marginTop:"5%"}}>
              <h1 style={{fontSize: "150%"}}>Select Size</h1>
              <label tabIndex={0} className="btn m-1">
                  {ment}
@@ -40,10 +40,10 @@ function Img() {
                  })}
              </ul>
          </div>
-
+         </div>
          <div className="flex flex-col space-y-2 px-2">
-            <div className="flex justify-center">
-         <div className="dropdown" style={{marginBottom: "5%", marginTop:"5%"}}>
+         <div className="flex justify-center">
+         <div className="dropdown" style={{marginBottom: "1%", marginTop:"1%"}}>
              <h1 style={{fontSize: "150%"}}>Select Number of Images</h1>
              <label tabIndex={0} className="btn m-1">
                  {imgMent}
@@ -56,19 +56,19 @@ function Img() {
                              <a onClick={(event) => { 
                                  setNumber(item)
                                  setImgMent(item)
-                                 }}>{imgNumber}</a></li>
+                                 }}>{item}</a></li>
                          </div>
                      )
                  })}
              </ul>
                 </div>
-            </div>
-         </div>
+                </div>
+    
 
          </div>
              <div className="flex flex-col space-y-2 px-2">
                  <div className="flex justify-center">
-                     <SendImage></SendImage>
+                     <SendImage size={size} imgNumber={imgNumber}></SendImage>
                  </div>
              </div>
          </div>

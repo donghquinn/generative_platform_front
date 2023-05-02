@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 function ChatBubble({message, response}) {
     // const [response, setResponse] = useRecoilState(responseRecoil);
@@ -11,7 +12,8 @@ function ChatBubble({message, response}) {
                 return (
                     <div key={item} className="chat chat-end">
              
-                        <div className="chat-bubble" style={{"whiteSpace": "pre-line"}}>{item}</div>
+                        <div className="chat-bubble" style={{"whiteSpace": "pre-line"}}>
+                            <Image alt={"Generated Image"} src={item}>{item}</Image></div>
                      </div>
                 )
             })}

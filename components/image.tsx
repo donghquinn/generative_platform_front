@@ -6,15 +6,15 @@ import ChatBubble from "./bubble";
 import ErrorBubble from "./error/bubble.error";
 
 
-function SendImage() {
+function SendImage({size, imgNumber}) {
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(imageRequestSuccess);
 
-    const [size, setSize] = useRecoilState(imageSizeRecoil);
+    // const [size, setSize] = useRecoilState(imageSizeRecoil);
     
     const [prompt, setPrompt] = useState("");
     // const [imgNumber, setNumber] = useState("1");
-    const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
+    // const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
 
     const [response, setResponse] = useRecoilState(imageResponseRecoil);
 
@@ -76,8 +76,11 @@ function SendImage() {
         return (
             <div>
                 <div>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
                     <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                    <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                    <button className="btn" style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                    </div></div>
                 </div>
                 <div style={{marginTop: "5%"}}>
                     <ChatBubble message={prompt} response={response}></ChatBubble>
