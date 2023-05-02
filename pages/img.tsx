@@ -1,17 +1,16 @@
 import { useState } from "react";
 import SendImage from "../components/image";
 import { useRecoilState } from "recoil";
-import { imageNumberRecoil } from "../src/image.recoil";
+import { imageNumberRecoil, imageSizeRecoil } from "../src/image.recoil";
+import { Sizes } from "../src/image.type";
 
 function Img() {
-
-
  // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
- const sizeArray = ["256x256", "512x512", "1024x1024"];
+ const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];
  const imgNumberArray = ["1", "2", "3","4", "5", "6", "7", "8", "9", "10"];
  // const [showDropdown, setShowDropDown] = useState(false);
 
- const [size, setSize] = useState<string>("256x256");
+ const [size, setSize] = useRecoilState(imageSizeRecoil);
  const [ment, setMent] = useState("Select Size")
 
  const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
@@ -33,7 +32,6 @@ function Img() {
                              <li onClick={(event) => { 
                                  setSize(item)
                                  setMent(item)
-                                 
                                  }}>
                              <a>{item}</a></li>
                          </div>
@@ -65,7 +63,7 @@ function Img() {
          </div>
              <div className="flex flex-col space-y-2 px-2">
                  <div className="flex justify-center">
-                     <SendImage size={size}></SendImage>
+                     <SendImage></SendImage>
                  </div>
              </div>
          </div>

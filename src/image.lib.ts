@@ -1,4 +1,5 @@
 import fetch from "node-fetch"
+import { Formats, Sizes } from "./image.type";
 
 interface ImageReseponse {
     resCode: string;
@@ -10,13 +11,7 @@ interface ResultArray {
     result: Array<string | undefined> | null;
 }
 
-
-export type ImageResponseFormat = "url" | "b64_json";
-
-export type SizeTypes = '256x256' | '512x512' | '1024x1024';
-
-
-export const requestImg = async(prompt: string, number: string, size: SizeTypes, responseFormat?: ImageResponseFormat, user?: string) => {
+export const requestImg = async(prompt: string, number: string, size: Sizes, responseFormat?: Formats, user?: string) => {
     const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
     const options = {

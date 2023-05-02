@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { Sizes } from "./image.type";
 
 export const imageRecoil = atom({
     key: "imageRecoil",
@@ -10,6 +11,11 @@ export const imageNumberRecoil = atom({
     key: "imageNumberRecoil",
     default: "1",
 });
+
+export const imageSizeRecoil = atom<Sizes>({
+    key: "imageNumberRecoil",
+    default: "256x256",
+})
 
 export const imageResponseRecoil = atom ({
     key: "imageResponseRecoil",
