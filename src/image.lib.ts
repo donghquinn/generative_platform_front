@@ -2,11 +2,21 @@ import fetch from "node-fetch"
 
 interface ImageReseponse {
     resCode: string;
-    dataRes: string[] | null;
+    dataRes: ResultArray;
     errMsg: string | string[] | null;
-};
+}
 
-export const requestChatImg = async(prompt: string, number: string, size: string) => {
+interface ResultArray {
+    result: Array<string | undefined> | null;
+}
+
+
+export type ImageResponseFormat = "url" | "b64_json";
+
+export type SizeTypes = '256x256' | '512x512' | '1024x1024';
+
+
+export const requestImg = async(prompt: string, number: string, size?: SizeTypes, responseFormat?: ImageResponseFormat, user?: string) => {
     const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
     const options = {
@@ -14,6 +24,8 @@ export const requestChatImg = async(prompt: string, number: string, size: string
             prompt,
             number,
             size,
+            responseFormat,
+            user,
         })
     };
 
