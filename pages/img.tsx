@@ -41,6 +41,8 @@ function Img() {
              </ul>
          </div>
 
+         <div className="flex flex-col space-y-2 px-2">
+            <div className="flex justify-center">
          <div className="dropdown" style={{marginBottom: "5%", marginTop:"5%"}}>
              <h1 style={{fontSize: "150%"}}>Select Number of Images</h1>
              <label tabIndex={0} className="btn m-1">
@@ -54,11 +56,13 @@ function Img() {
                              <a onClick={(event) => { 
                                  setNumber(item)
                                  setImgMent(item)
-                                 }}>{item}</a></li>
+                                 }}>{imgNumber}</a></li>
                          </div>
                      )
                  })}
              </ul>
+                </div>
+            </div>
          </div>
 
          </div>
