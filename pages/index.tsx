@@ -3,7 +3,10 @@ import Chat from './chat';
 function Home() {
     return (
         <div>
-            <Chat></Chat>
+            <h1>Chat With chatGPT</h1>
+            <div>
+                <Chat></Chat>
+            </div>
         </div>
     )
 }
