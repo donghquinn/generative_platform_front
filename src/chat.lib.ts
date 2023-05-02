@@ -9,8 +9,8 @@ interface ResultArray {
 }
 
 
-export const chatRequest = async(model: string, content: string, name?: string, temperature?: number, topP?: number, number?: number, stream?: boolean, stop?: string | Array<string>, maxTokens?: number, presencePenalty?: number, frequencyPenalty?: number, user?: string) => {
-    const url = process.env.NEXT_PUBLIC_CHAT_URL;
+export const chatRequest = async(model: string, content: string, number: number,name?: string, temperature?: number, topP?: number,  stream?: boolean, stop?: string | Array<string>, maxTokens?: number, presencePenalty?: number, frequencyPenalty?: number, user?: string) => {
+    const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
     const options = {
         headers: {

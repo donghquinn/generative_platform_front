@@ -17,7 +17,7 @@ export const imageSizeRecoil = atom<Sizes>({
     default: "256x256",
 })
 
-export const imageResponseRecoil = atom ({
+export const imageResponseRecoil = atom<Array<string>>({
     key: "imageResponseRecoil",
     default: [],
 });

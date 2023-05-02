@@ -19,7 +19,7 @@ function SendChat({model}) {
     const request = async() => {
         setSent(true);
 
-        const response = await chatRequest(model, prompt);
+        const response = await chatRequest(model, prompt, 1);
 
         console.log(response.resCode);
         // console.log(response.dataRes[0].response);

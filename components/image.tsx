@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { requestImg } from "../src/image.lib";
-import { imageErrMsgRecoil, imageNumberRecoil, imageRequestSuccess, imageResponseRecoil, imageSizeRecoil } from "../src/image.recoil";
-import ChatBubble from "./bubble";
+import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import ErrorBubble from "./error/bubble.error";
+import ImageBubble from "./img.bubble";
 
 
 function SendImage({size, imgNumber}) {
@@ -21,27 +21,26 @@ function SendImage({size, imgNumber}) {
     const [ errors, setErrors ] = useState(false);
     const [errMsg, setErrmsg] = useRecoilState(imageErrMsgRecoil);
     
-
     const request = async() => {
         setSent(true);
 
-        const response = await requestImg(prompt,imgNumber, size);
+        const imageResponse = await requestImg(prompt,imgNumber, size);
 
-        console.log(response.resCode);
+        console.log(imageResponse.resCode);
         // console.log(response.dataRes[0].response);
 
-        if (response.resCode === "200") {
+        if (imageResponse.resCode === "200") {
             setSuccess(true);
             setSent(false);
-            setResponse(response.dataRes.result);
+            setResponse(imageResponse.dataRes.result);
           
             setErrors(false);
         } 
    
-        if (response.resCode === "500") {
+        if (imageResponse.resCode === "500") {
             setSuccess(false);
             setSent(false);
-            setErrmsg(response.errMsg);
+            setErrmsg(imageResponse.errMsg);
        
             setErrors(true);
         }
@@ -83,7 +82,7 @@ function SendImage({size, imgNumber}) {
                     </div></div>
                 </div>
                 <div style={{marginTop: "5%"}}>
-                    <ChatBubble message={prompt} response={response}></ChatBubble>
+                    <ImageBubble message={prompt} response={response}></ImageBubble>
                 </div>
             </div>
         )
