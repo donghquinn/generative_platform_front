@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { requestImg } from "../src/image.lib";
-import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
+import { imageErrMsgRecoil, imageNumberRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import ChatBubble from "./bubble";
 import ErrorBubble from "./error/bubble.error";
 
-function SendImage({size, imgNumber}) {
+function SendImage({size}) {
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(imageRequestSuccess);
 
     const [prompt, setPrompt] = useState("");
     // const [imgNumber, setNumber] = useState("1");
+    const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
 
     const [response, setResponse] = useRecoilState(imageResponseRecoil);
 
@@ -21,7 +22,7 @@ function SendImage({size, imgNumber}) {
     const request = async() => {
         setSent(true);
 
-        const response = await requestImg(size, prompt, imgNumber);
+        const response = await requestImg( prompt,imgNumber, size);
 
         console.log(response.resCode);
         // console.log(response.dataRes[0].response);

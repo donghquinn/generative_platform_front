@@ -16,10 +16,15 @@ export type ImageResponseFormat = "url" | "b64_json";
 export type SizeTypes = '256x256' | '512x512' | '1024x1024';
 
 
-export const requestImg = async(prompt: string, number: string, size?: SizeTypes, responseFormat?: ImageResponseFormat, user?: string) => {
+export const requestImg = async(prompt: string, number: string, size: SizeTypes, responseFormat?: ImageResponseFormat, user?: string) => {
     const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
     const options = {
+        headers: {
+            "Content-Type": "application/json", 
+            key: process.env.NEXT_PUBLIC_KEY!
+        },
+        method: "POST",
         body: JSON.stringify({
             prompt,
             number,

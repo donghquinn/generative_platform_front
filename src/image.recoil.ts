@@ -5,6 +5,12 @@ export const imageRecoil = atom({
     default: [""],
 });
 
+
+export const imageNumberRecoil = atom({
+    key: "imageNumberRecoil",
+    default: "1",
+});
+
 export const imageResponseRecoil = atom ({
     key: "imageResponseRecoil",
     default: [],

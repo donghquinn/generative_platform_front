@@ -1,5 +1,7 @@
 import { useState } from "react";
 import SendImage from "../components/image";
+import { useRecoilState } from "recoil";
+import { imageNumberRecoil } from "../src/image.recoil";
 
 function Image() {
 
@@ -9,10 +11,10 @@ function Image() {
  const imgNumberArray = ["1", "2", "3","4", "5", "6", "7", "8", "9", "10"];
  // const [showDropdown, setShowDropDown] = useState(false);
 
- const [size, setSize] = useState<string>();
+ const [size, setSize] = useState<string>("256x256");
  const [ment, setMent] = useState("Select Model")
 
- const [imgNumber, setNumber] = useState("1");
+ const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
  const [imgMent, setImgMent] = useState("Select Number");
 
  return (
@@ -63,7 +65,7 @@ function Image() {
          </div>
              <div className="flex flex-col space-y-2 px-2">
                  <div className="flex justify-center">
-                     <SendImage size={size} imgNumber={imgNumber}></SendImage>
+                     <SendImage size={size}></SendImage>
                  </div>
              </div>
          </div>
