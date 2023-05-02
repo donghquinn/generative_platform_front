@@ -51,8 +51,7 @@ function Image() {
                          <div key={item}>
                              <li onClick={(event) => { 
                                  setSize(item)
-                                 setMent(item)
-                                 
+                                 setImgMent(item)
                                  }}>
                              <a>{item}</a></li>
                          </div>
