@@ -8,7 +8,7 @@ import ImageBubble from "../components/img.bubble";
 function Img() {
  // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
  const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];
- const imgNumberArray = ["1", "2", "3","4", "5", "6", "7", "8", "9", "10"];
+ const imgNumberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
  // const [showDropdown, setShowDropDown] = useState(false);
 
  const [size, setSize] = useState("256x256");
@@ -64,8 +64,6 @@ function Img() {
              </ul>
                 </div>
                 </div>
-    
-
          </div>
              <div className="flex flex-col space-y-2 px-2">
                  <div className="flex justify-center">

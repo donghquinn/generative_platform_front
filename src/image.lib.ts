@@ -16,7 +16,7 @@ export const requestImg = async(prompt: string, number: string, size: Sizes, res
     const options = {
         headers: {
             "Content-Type": "application/json", 
-            key: process.env.NEXT_PUBLIC_KEY!
+            key: process.env.NEXT_PUBLIC_KEY!,
         },
         method: "POST",
         body: JSON.stringify({
