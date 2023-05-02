@@ -59,12 +59,20 @@ function SendChat({model}) {
     if (errors) {
         return(
             <div>
-            <div>
+            {/* <div>
                 <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
                 <button className="btn" onClick={(event) => {request()}}>보내기</button>
-            </div>
-            <div>
-                <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
+            </div> */}
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+                        <button className="btn"style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                    </div>
+                </div>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
+                </div>
             </div>
         </div>
         )
@@ -79,7 +87,7 @@ function SendChat({model}) {
                         <button className="btn"style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
                     </div>
                 </div>
-                <div className="flex flex-col space-y-0  px-1" style={{marginTop: "3%"}}>
+                <div className="flex flex-col space-y-2 px-2" style={{marginTop: "3%"}}>
                     <div className="flex justify-center">
                         <ChatBubble message={prompt} response={response}></ChatBubble>
                     </div>
