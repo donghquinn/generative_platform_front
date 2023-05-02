@@ -12,7 +12,7 @@ function Image() {
  // const [showDropdown, setShowDropDown] = useState(false);
 
  const [size, setSize] = useState<string>("256x256");
- const [ment, setMent] = useState("Select Model")
+ const [ment, setMent] = useState("Select Size")
 
  const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
  const [imgMent, setImgMent] = useState("Select Number");
@@ -52,7 +52,7 @@ function Image() {
                      return (
                          <div key={item}>
                              <li onClick={(event) => { 
-                                 setSize(item)
+                                 setNumber(item)
                                  setImgMent(item)
                                  }}>
                              <a>{item}</a></li>
