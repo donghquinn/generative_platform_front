@@ -73,7 +73,7 @@ function SendChat({model}) {
                     <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
                     <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
                 </div>
-                <div style={{marginTop: "3%"}}>
+                <div style={{marginTop: "5%"}}>
                     <ChatBubble message={prompt} response={response}></ChatBubble>
                 </div>
             </div>

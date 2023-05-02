@@ -11,7 +11,7 @@ function ChatBubble({message, response}) {
                 return (
                     <div key={item} className="chat chat-end">
              
-                        <div className="chat-bubble">{item}</div>
+                        <div className="chat-bubble" style={{"whiteSpace": "pre-wrap"}}>{item}</div>
                      </div>
                 )
             })}

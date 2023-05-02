@@ -28,7 +28,7 @@ function Chat() {
                                 <li onClick={(event) => { 
                                     setModel(item)
                                     setMent(item)
-                                    close()
+                                    
                                     }}>
                                 <a>{item}</a></li>
                             </div>
