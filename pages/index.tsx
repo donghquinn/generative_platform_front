@@ -8,9 +8,6 @@ function Home() {
                     <h1>Chat With chatGPT</h1>
                 </div>
             </div>
-            <div>
-                <Chat></Chat>
-            </div>
         </div>
     )
 }
