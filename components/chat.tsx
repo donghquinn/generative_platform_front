@@ -47,7 +47,11 @@ function SendChat({model}) {
     if (sent) {
         return (
             <div>
-                <button className="btn loading">Waiting For chatGPT</button>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <button className="btn loading">Waiting For chatGPT</button>
+                    </div>
+                </div>
             </div>
         )
     };
@@ -57,7 +61,7 @@ function SendChat({model}) {
             <div>
             <div>
                 <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                <button className="btn" onClick={(event) => {request()}}>보내기</button>
             </div>
             <div>
                 <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
@@ -69,17 +73,19 @@ function SendChat({model}) {
 
         return (
             <div>
-                <div>
-                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                    <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+                        <button className="btn"style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                    </div>
                 </div>
-                <div style={{marginTop: "5%"}}>
-                    <ChatBubble message={prompt} response={response}></ChatBubble>
+                <div className="flex flex-col space-y-0  px-1" style={{marginTop: "3%"}}>
+                    <div className="flex justify-center">
+                        <ChatBubble message={prompt} response={response}></ChatBubble>
+                    </div>
                 </div>
             </div>
         )
- 
-   
 }
 
 export default SendChat;
