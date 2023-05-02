@@ -1,4 +1,3 @@
-import fetch from "node-fetch"
 import { Formats, Sizes } from "./image.type";
 
 interface ImageReseponse {
