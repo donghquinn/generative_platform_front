@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { requestSuccess } from "../src/chat.recoil";
-import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import { requestImg } from "../src/image.lib";
+import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import ChatBubble from "./bubble";
 import ErrorBubble from "./error/bubble.error";
 
