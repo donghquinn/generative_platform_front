@@ -2,55 +2,25 @@ import { useRef, useState } from "react";
 import Image from 'next/image';
 import { Sizes } from "../src/image.type";
 import { ImageReseponse } from "../src/image.lib";
+import EditBubble from "../components/edit.bubble";
+import EditImage from "../components/edit";
+import { imageEditFile } from "../src/image.recoil";
+import { useRecoilState } from "recoil";
+import UploadImage from "../components/upload";
 
 function ImageUploader() {
     const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];
 
-  const [selectedImage, setSelectedImage] = useState(null);
-
   const imgNumberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   // const [showDropdown, setShowDropDown] = useState(false);
- 
   const [size, setSize] = useState("256x256");
   const [ment, setMent] = useState("Select Size");
- 
+
   const [imgNumber, setNumber] = useState("1");
   const [imgMent, setImgMent] = useState("Select Number");
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (event) => {
-      setSelectedImage(event.target.result);
-    };
-
-    reader.readAsDataURL(file);
-  };
-
-  const handleImageEdit = async () => {
-
-        const url = process.env.NEXT_PUBLIC_IMAGE_URL;
-
-        const options = {
-            headers: {
-                "Content-Type": "application/json", 
-                key: process.env.NEXT_PUBLIC_KEY!
-            },
-            method: "POST",
-            body: JSON.stringify({
-                image: selectedImage,
-                prompt,
-                number: imgNumber,
-                size,
-            })
-        };
-    
-        const response = await (await fetch(url, options)).json() as ImageReseponse;
-    
-      
-      console.log(response);
-  };
+  
+  
 
   return (
     <div>
@@ -100,16 +70,9 @@ function ImageUploader() {
              </ul>
                 </div>
                 </div>
-      <input type="file" onChange={handleImageUpload} />
-      {selectedImage && (
-        <>
-          <div>
-            <Image src={selectedImage} alt="Selected Image" width={300} height={300} />
-          </div>
-          <button onClick={handleImageEdit}>Edit Image</button>
-        </>
-      )}
+            <UploadImage></UploadImage>
       </div>
+        <EditImage  size={size} imgNumber={imgNumber}></EditImage>
       </div>
    </div>
   );

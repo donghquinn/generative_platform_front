@@ -1,8 +1,14 @@
-import Link from 'next/link';
+import Image from "next/image";
 
-function ImageBubble({message, response}) {
+function EditBubble({selectedImage, message, response}) {
     return (
         <div>
+             <>
+          <div>
+            <Image src={selectedImage} alt="Selected Image" width={300} height={300} />
+          </div>
+          </>
+
             <div className="chat chat-start">
                 <div className="chat-bubble">{message}</div>
             </div>
@@ -16,12 +22,10 @@ function ImageBubble({message, response}) {
                         </Link> */}
                         </div> 
                      </div>
-                )   
+                )
             })}
         </div>
       )
 }
 
-export default ImageBubble;
-
-// <Image alt={"Generated Image"} src={item} width={30} height={30}>{item}</Image>
+export default EditBubble;

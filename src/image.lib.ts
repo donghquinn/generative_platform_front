@@ -33,17 +33,19 @@ export const requestImg = async(prompt: string, number: string, size?: Sizes, re
     return response;
 }
 
-export const editImage = async(image: FormData, prompt: string, number: string, size?: string ) => {
-    const url = process.env.NEXT_PUBLIC_IMAGE_URL;
+export const editImage = async(selectedImage: string, prompt: string, number: string, size?: string ) => {
+    const url = process.env.NEXT_PUBLIC_EDIT_IMAGE_URL;
+    const formData = new FormData();
 
+    formData.append("image", selectedImage);
     const options = {
         headers: {
-            "Content-Type": "application/json", 
+            'Content-Type': 'multipart/form-data',
             key: process.env.NEXT_PUBLIC_KEY!
         },
         method: "POST",
         body: JSON.stringify({
-            image,
+            image: formData,
             prompt,
             number,
             size,
