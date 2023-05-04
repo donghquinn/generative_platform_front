@@ -1,12 +1,12 @@
 import { Formats, Sizes } from "./image.type";
 
-interface ImageReseponse {
+export interface ImageReseponse {
     resCode: string;
     dataRes: ResultArray;
     errMsg: string | string[] | null;
 }
 
-interface ResultArray {
+export interface ResultArray {
     result: Array<string | undefined> | null;
 }
 
