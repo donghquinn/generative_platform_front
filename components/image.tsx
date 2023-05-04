@@ -21,27 +21,26 @@ function SendImage({size, imgNumber}) {
     const [ errors, setErrors ] = useState(false);
     const [errMsg, setErrmsg] = useRecoilState(imageErrMsgRecoil);
     
-
     const request = async() => {
         setSent(true);
 
-        const response = await requestImg(prompt,imgNumber, size);
+        const imageResponse = await requestImg(prompt,imgNumber, size);
 
-        console.log(response.resCode);
+        console.log(imageResponse.resCode);
         // console.log(response.dataRes[0].response);
 
-        if (response.resCode === "200") {
+        if (imageResponse.resCode === "200") {
             setSuccess(true);
             setSent(false);
-            setResponse(response.dataRes.result);
+            setResponse(imageResponse.dataRes.result);
           
             setErrors(false);
         } 
    
-        if (response.resCode === "500") {
+        if (imageResponse.resCode === "500") {
             setSuccess(false);
             setSent(false);
-            setErrmsg(response.errMsg);
+            setErrmsg(imageResponse.errMsg);
        
             setErrors(true);
         }
