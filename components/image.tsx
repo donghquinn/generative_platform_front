@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { requestImg } from "../src/image.lib";
-import { imageErrMsgRecoil, imageNumberRecoil, imageRequestSuccess, imageResponseRecoil, imageSizeRecoil } from "../src/image.recoil";
-import ChatBubble from "./bubble";
+import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import ErrorBubble from "./error/bubble.error";
+import ImageBubble from "./imgbubble";
 
 
 function SendImage({size, imgNumber}) {
@@ -83,7 +83,7 @@ function SendImage({size, imgNumber}) {
                     </div></div>
                 </div>
                 <div style={{marginTop: "5%"}}>
-                    <ChatBubble message={prompt} response={response}></ChatBubble>
+                    <ImageBubble message={prompt} response={response}></ImageBubble>
                 </div>
             </div>
         )

@@ -11,9 +11,8 @@ function ChatBubble({message, response}) {
             {response.map((item) => {
                 return (
                     <div key={item} className="chat chat-end">
-             
                         <div className="chat-bubble" style={{"whiteSpace": "pre-line"}}>
-                            <Image alt={"Generated Image"} src={item}>{item}</Image></div>
+                            <p>{item}</p></div>
                      </div>
                 )
             })}

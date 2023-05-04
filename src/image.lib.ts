@@ -10,7 +10,7 @@ interface ResultArray {
     result: Array<string | undefined> | null;
 }
 
-export const requestImg = async(prompt: string, number: string, size: Sizes, responseFormat?: Formats, user?: string) => {
+export const requestImg = async(prompt: string, number: string, size?: Sizes, responseFormat?: Formats, user?: string) => {
     const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
     const options = {
@@ -25,6 +25,28 @@ export const requestImg = async(prompt: string, number: string, size: Sizes, res
             size,
             responseFormat,
             user,
+        })
+    };
+
+    const response = await (await fetch(url, options)).json() as ImageReseponse;
+
+    return response;
+}
+
+export const editImage = async(image: FormData, prompt: string, number: string, size?: string ) => {
+    const url = process.env.NEXT_PUBLIC_IMAGE_URL;
+
+    const options = {
+        headers: {
+            "Content-Type": "application/json", 
+            key: process.env.NEXT_PUBLIC_KEY!
+        },
+        method: "POST",
+        body: JSON.stringify({
+            image,
+            prompt,
+            number,
+            size,
         })
     };
 

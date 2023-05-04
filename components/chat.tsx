@@ -4,6 +4,7 @@ import { chatRequest } from "../src/chat.lib";
 import { errMsgRecoil, requestSuccess, responseRecoil } from "../src/chat.recoil";
 import ChatBubble from "./bubble";
 import ErrorBubble from "./error/bubble.error";
+import ImageBubble from "./imgbubble";
 
 function SendChat({model}) {
     const [sent, setSent] = useState(false);
@@ -19,7 +20,7 @@ function SendChat({model}) {
     const request = async() => {
         setSent(true);
 
-        const response = await chatRequest(model, prompt);
+        const response = await chatRequest(model, prompt, 1);
 
         console.log(response.resCode);
         // console.log(response.dataRes[0].response);

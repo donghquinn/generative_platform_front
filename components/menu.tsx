@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const menuList = ["Chat", "Image"];
+const menuList = ["Chat", "Image", "Edit"];
 
 function Menu () {
     const router = useRouter();
@@ -25,6 +25,14 @@ function Menu () {
                 return (
                     <div key={item} className="flex items-stretch">
                         <a className="btn btn-ghost rounded-btn" onClick={() => router.push("/img")}>{item}</a>
+                    </div>
+                )
+            }
+
+            if (item ==="Edit") {
+                return (
+                    <div key={item} className="flex items-stretch">
+                        <a className="btn btn-ghost rounded-btn" onClick={() => router.push("/edit")}>{item}</a>
                     </div>
                 )
             }
