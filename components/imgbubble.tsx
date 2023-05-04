@@ -10,9 +10,10 @@ function ImageBubble({message, response}) {
                 return (
                     <div key={item} className="chat chat-end">
                         <div className="chat-bubble" style={{"whiteSpace": "pre-line"}}>
-                        <Link href={item}>
+                            <img src={item} alt='image'></img>                       
+                        {/* <Link href={item}>
                             <p>{item}</p>
-                        </Link>
+                        </Link> */}
                         </div> 
                      </div>
                 )

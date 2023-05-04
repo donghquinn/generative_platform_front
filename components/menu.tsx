@@ -24,7 +24,7 @@ function Menu () {
             if (item === "Image") {
                 return (
                     <div key={item} className="flex items-stretch">
-                        <a className="btn btn-ghost rounded-btn" onClick={() => router.push("/img")}>{item}</a>
+                        <a className="btn btn-ghost rounded-btn" onClick={() => router.push("/generate")}>{item}</a>
                     </div>
                 )
             }

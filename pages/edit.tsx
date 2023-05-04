@@ -19,7 +19,8 @@ function EditImage() {
 
             return;
         }
-        else {const formData = new FormData();
+        else {
+            const formData = new FormData();
 
             formData.append("image", image);
     
@@ -27,7 +28,8 @@ function EditImage() {
                 console.log("Image")
             } catch (error) {
                 console.log(error)
-            }}
+            }
+        }
 
         
     }
