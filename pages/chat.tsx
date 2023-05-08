@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { chatRequest } from "../src/chat.lib";
+import { useState } from "react";
 import SendChat from "../components/chat";
 
 
@@ -25,12 +24,12 @@ function Chat() {
                     {modelArray.map((item) => {
                         return (
                             <div key={item}>
-                                <li onClick={(event) => { 
-                                    setModel(item)
-                                    setMent(item)
-                                    
-                                    }}>
-                                <a>{item}</a></li>
+                                <li >
+                                    <a onClick={(event) => { 
+                                        setModel(item)
+                                        setMent(item)
+                                        }}>{item}</a>
+                                </li>
                             </div>
                         )
                     })}
@@ -38,11 +37,9 @@ function Chat() {
             </div>
 
             </div>
-                <div className="flex flex-col space-y-2 px-2">
-                    <div className="flex justify-center">
+          
                         <SendChat model={model}></SendChat>
-                    </div>
-                </div>
+                
             </div>
         </div>
     )

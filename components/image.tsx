@@ -1,44 +1,46 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { requestSuccess } from "../src/chat.recoil";
-import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import { requestImg } from "../src/image.lib";
-import ChatBubble from "./bubble";
+import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
 import ErrorBubble from "./error/bubble.error";
+import ImageBubble from "./imgbubble";
+
 
 function SendImage({size, imgNumber}) {
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(imageRequestSuccess);
 
+    // const [size, setSize] = useRecoilState(imageSizeRecoil);
+    
     const [prompt, setPrompt] = useState("");
     // const [imgNumber, setNumber] = useState("1");
+    // const [imgNumber, setNumber] = useRecoilState(imageNumberRecoil);
 
     const [response, setResponse] = useRecoilState(imageResponseRecoil);
 
     const [ errors, setErrors ] = useState(false);
     const [errMsg, setErrmsg] = useRecoilState(imageErrMsgRecoil);
     
-
     const request = async() => {
         setSent(true);
 
-        const response = await requestImg(size, prompt, imgNumber);
+        const imageResponse = await requestImg(prompt,imgNumber, size);
 
-        console.log(response.resCode);
+        console.log(imageResponse.resCode);
         // console.log(response.dataRes[0].response);
 
-        if (response.resCode === "200") {
+        if (imageResponse.resCode === "200") {
             setSuccess(true);
             setSent(false);
-            setResponse(response.dataRes.result);
+            setResponse(imageResponse.dataRes.result);
           
             setErrors(false);
         } 
    
-        if (response.resCode === "500") {
+        if (imageResponse.resCode === "500") {
             setSuccess(false);
             setSent(false);
-            setErrmsg(response.errMsg);
+            setErrmsg(imageResponse.errMsg);
        
             setErrors(true);
         }
@@ -73,11 +75,14 @@ function SendImage({size, imgNumber}) {
         return (
             <div>
                 <div>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
                     <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                    <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                    <button className="btn" style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                    </div></div>
                 </div>
                 <div style={{marginTop: "5%"}}>
-                    <ChatBubble message={prompt} response={response}></ChatBubble>
+                    <ImageBubble message={prompt} response={response}></ImageBubble>
                 </div>
             </div>
         )

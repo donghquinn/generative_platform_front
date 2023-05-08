@@ -11,11 +11,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <title>IMLAB ChatGPT</title>
         {/* <script src="https://code.highcharts.com/highcharts.js"></script> */}
       </Head>
-      <Menu></Menu>
-      <RecoilRoot>
-        <Component {...pageProps} />
-      </RecoilRoot>
-
+        <Menu></Menu>
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
     </>
   );
 }
