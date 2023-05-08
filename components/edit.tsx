@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { ImageReseponse, editImage } from "../src/image.lib";
-import { imageEditFile, imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
+import { imageEditFile, imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil, imageUpload } from "../src/image.recoil";
 import EditBubble from "./edit.bubble";
 import ErrorBubble from "./error/bubble.error";
 
@@ -21,7 +21,7 @@ function EditImage({size, imgNumber}) {
 
   const [response, setResponse] = useRecoilState(imageResponseRecoil);
 
-  const [selectedImage, setSelectedImage] = useRecoilState(imageEditFile);
+  const [selectedImage, setSelectedImage] = useRecoilState(imageUpload);
 
 
 

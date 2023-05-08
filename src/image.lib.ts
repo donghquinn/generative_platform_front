@@ -35,9 +35,13 @@ export const requestImg = async(prompt: string, number: string, size?: Sizes, re
 
 export const editImage = async(selectedImage: string, prompt: string, number: string, size?: string ) => {
     const url = process.env.NEXT_PUBLIC_EDIT_IMAGE_URL;
+
     const formData = new FormData();
 
     formData.append("image", selectedImage);
+
+    console.log("Form Data: %o", {selectedImage});
+    
     const options = {
         headers: {
             'Content-Type': 'multipart/form-data',

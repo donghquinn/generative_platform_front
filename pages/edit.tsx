@@ -72,7 +72,7 @@ function ImageUploader() {
                 </div>
             <UploadImage></UploadImage>
       </div>
-        <EditImage  size={size} imgNumber={imgNumber}></EditImage>
+        <EditImage size={size} imgNumber={imgNumber}></EditImage>
       </div>
    </div>
   );

@@ -32,7 +32,18 @@ export const imageRequestSuccess = atom({
     default: false,
 });
 
+export const imageUpload = atom<string>({
+    key: "imageUpload",
+    default: "",
+});
+
 export const imageEditFile = atom<string >({
     key: "imageEditFile",
     default: "",
-})
+});
+
+export const imageFileName = atom<string >({
+    key: "imageFileName",
+    default: "",
+});
+

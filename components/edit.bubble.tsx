@@ -11,7 +11,7 @@ function EditBubble({selectedImage, message, response}) {
 
             <div className="chat chat-start">
                 <div className="chat-bubble">{message}</div>
-            </div>
+        
             {response.map((item) => {
                 return (
                     <div key={item} className="chat chat-end">
@@ -24,6 +24,7 @@ function EditBubble({selectedImage, message, response}) {
                      </div>
                 )
             })}
+           </div>
         </div>
       )
 }
