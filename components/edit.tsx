@@ -90,11 +90,12 @@ function EditImage({size, imgNumber}) {
         return (
             <div>
                 <div>
-                <div className="flex flex-col space-y-2 px-2">
-                    <div className="flex justify-center">
-                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                    <button className="btn" style={{marginLeft: "2%"}} onClick={(event) => {handleImageEdit()}}>보내기</button>
-                    </div></div>
+                    <div className="flex flex-col space-y-2 px-2">
+                        <div className="flex justify-center">
+                            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
+                            <button type="submit" className="btn" style={{marginLeft: "2%"}} onClick={(event) => {handleImageEdit()}}>보내기</button>
+                        </div>
+                    </div>
                 </div>
                 <div style={{marginTop: "5%"}}>
                     <EditBubble selectedImage={selectedImage} message={prompt} response={response}></EditBubble>

@@ -9,7 +9,19 @@ interface ResultArray {
 }
 
 
-export const chatRequest = async(model: string, content: string, name?: string, temperature?: number, topP?: number, number?: string, stream?: boolean, stop?: string | Array<string>, maxTokens?: number, presencePenalty?: number, frequencyPenalty?: number, user?: string) => {
+export const chatRequest = async(
+    model: string, 
+    content: string, 
+    number: string, 
+    name?: string, 
+    temperature?: number, 
+    topP?: number, 
+    stream?: boolean, 
+    stop?: string | Array<string>, 
+    maxTokens?: number, 
+    presencePenalty?: number, 
+    frequencyPenalty?: number, 
+    user?: string) => {
     const url = process.env.NEXT_PUBLIC_CHAT_URL;
 
     const options = {
