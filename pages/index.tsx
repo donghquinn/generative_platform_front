@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Chat from './chat';
 
 function Home() {
     const router = useRouter();

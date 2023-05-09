@@ -1,12 +1,7 @@
-import { useRef, useState } from "react";
-import Image from 'next/image';
-import { Sizes } from "../src/image.type";
-import { ImageReseponse } from "../src/image.lib";
-import EditBubble from "../components/edit.bubble";
+import { useState } from "react";
 import EditImage from "../components/edit";
-import { imageEditFile } from "../src/image.recoil";
-import { useRecoilState } from "recoil";
 import UploadImage from "../components/upload";
+import { Sizes } from "../src/image.type";
 
 function ImageUploader() {
     const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];
