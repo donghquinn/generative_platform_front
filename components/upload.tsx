@@ -1,41 +1,79 @@
-import { useRecoilState } from "recoil";
-import { imageFileName, imageUpload } from "../src/image.recoil";
+import { useState } from "react";
+import { requestEdit } from "../src/image.lib";
+import Image from "next/image";
 
+/**
+ * https://falsy.me/nextjs-api-routes%EB%A5%BC-%ED%86%B5%ED%95%B4-api-%EC%84%9C%EB%B2%84%EB%A1%9C-%ED%8C%8C%EC%9D%BC-%EB%B3%B4%EB%82%B4%EA%B8%B0/
+ * @returns 
+ */
 function UploadImage ()
 {
+  const [image, setImage] = useState(null);
+  const [createObjectURL, setCreateObjectURL] = useState(null);
 
-    const [selectedImage, setSelectedImage] = useRecoilState(imageUpload);
-    const [fileName, setFileName] = useRecoilState(imageFileName);
+  const uploadToClient = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const i = event.target.files[0];
 
-  // const handleImageUpload = (event) => {
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
+      setImage(i);
+      setCreateObjectURL( URL.createObjectURL( i ) );
+    
+      console.log( URL.createObjectURL( i ) );
+    }
+  };
 
-  //   reader.onload = (event) => {
-  //     setSelectedImage(event.target.result);
-  //   };
+  const uploadFile = async (  ) =>
+  {
+    const formData = new FormData();
 
-  //   reader.readAsDataURL(file);
+    formData.append( 'image', createObjectURL.current );
 
-  //   setFileName(file.name)
+    const response = await requestEdit( formData, "pudding", "1", "256x256" );
 
-  //   console.log(file.name)
-  // };
+    console.log( "ResCode: %o", { rescode: response.resCode } );
+
+    if (response.resCode === "200") {
+      console.log( "Response: %o", { result: response.dataRes.result } );
+    } 
+    else
+    {
+      console.log( "Error ResCode: %o", { errorCode:response.resCode, errMsg: response.errMsg } )
+    }
+  }
 
   return (
-      <div>al</div>
-      //   <div>
-      //     <input type="file" onChange={handleImageUpload} />
-      //     {selectedImage && (
-      //       <>
-      //         <div>
-      //         {/* <EditImage selectedImage={selectedImage} imgNumber={imgNumber} size={size}></EditImage> */}
-      //           <Image src={selectedImage} alt="Selected Image" width={300} height={300} />
-      //         </div>
-      //   </>
-      // )}
-      //   </div>
-    );
+    <div>
+      <div>
+        {/* <img src={ createObjectURL }></img> */}
+        </div>
+
+      <div>
+        <form encType="multipart/form-data" id="image">
+
+      <input
+        name="image"
+        type="file"
+          accept="image/png"  
+          onChange={uploadToClient}
+        />
+          <button className="btn" onClick={ uploadFile }>Send</button>
+                
+   </form>
+      </div>
+      </div>
+  );
+
+  // return (
+  //   <div>
+  //     <form onSubmit={onSubmit}>
+  //       <input type="file" onChange={onChange} />
+  //       <input type="submit" value="upload" />
+  //     </form>
+  //     <progress value={pValue} />
+  //   </div>
+  //   );
 }
 
 export default UploadImage;
+
+//                 <img src={selectedImage} alt="Selected Image" width={300} height={300} />

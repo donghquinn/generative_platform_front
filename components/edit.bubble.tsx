@@ -4,9 +4,9 @@ function EditBubble({selectedImage, message, response}) {
     return (
         <div>
              <>
-          <div>
+          {/* <div>
             <Image src={selectedImage} alt="Selected Image" width={300} height={300} />
-          </div>
+          </div> */}
           </>
 
             <div className="chat chat-start">
