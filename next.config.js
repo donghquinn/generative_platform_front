@@ -1,9 +1,13 @@
+/** @type {import('next').NextConfig} */
+
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true,
-    images: {
-      domains: ["oaidalleapiprodscus.blob.core.windows.net"],
-    }
-  }
-  
-  module.exports = nextConfig
+  reactStrictMode: true,
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+
+    return config;
+  },
+};
+
+module.exports = nextConfig;

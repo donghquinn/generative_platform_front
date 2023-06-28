@@ -59,4 +59,22 @@ export const editImage = async(selectedImage: string, prompt: string, number: st
     const response = await (await fetch(url, options)).json() as ImageReseponse;
 
     return response;
-}
+};
+
+
+export const requestEdit = async ( formData: FormData, prompt: string, number: string, size?: string ) =>
+{
+    const options = {
+        headers: {
+            // 'Content-Type': 'multipart/form-data',
+            key: process.env.NEXT_PUBLIC_KEY!
+        },
+        method: "POST",
+        body: formData
+    };
+ 
+    const res = await ( await fetch( 'http://localhost:5543/img/edit', options ) ).json() as ImageReseponse;
+ 
+    return res;
+ 
+};

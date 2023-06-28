@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { ImageReseponse, editImage } from "../src/image.lib";
+import { ImageReseponse, editImage, requestEdit } from "../src/image.lib";
 import { imageEditFile, imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil, imageUpload } from "../src/image.recoil";
 import EditBubble from "./edit.bubble";
 import ErrorBubble from "./error/bubble.error";
@@ -28,23 +28,26 @@ function EditImage({size, imgNumber}) {
   const handleImageEdit = async () => {
     setSent(true);
 
-        const response = await editImage(selectedImage, prompt, imgNumber, size);
+        // const response = await editImage(selectedImage, prompt, imgNumber, size);
     
-        if (response.resCode === "200") {
-            setSuccess(true);
-            setSent(false);
-            setResponse(response.dataRes.result);
+  
+    // const response = await requestEdit();
+  
+        // if (response.resCode === "200") {
+        //     setSuccess(true);
+        //     setSent(false);
+        //     setResponse(response.dataRes.result);
           
-            setErrors(false);
-        } 
+        //     setErrors(false);
+        // } 
    
-        if (response.resCode === "500") {
-            setSuccess(false);
-            setSent(false);
-            setErrmsg(response.errMsg);
+        // if (response.resCode === "500") {
+        //     setSuccess(false);
+        //     setSent(false);
+        //     setErrmsg(response.errMsg);
        
-            setErrors(true);
-        }
+        //     setErrors(true);
+        // }
       
       console.log(response);
   };

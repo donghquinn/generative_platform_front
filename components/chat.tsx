@@ -22,9 +22,6 @@ function SendChat({model}) {
 
         const response = await chatRequest(model, prompt, "1");
 
-        console.log(response.resCode);
-        // console.log(response.dataRes[0].response);
-
         if (response.resCode === "200") {
             setSuccess(true);
             setSent(false);
@@ -32,6 +29,12 @@ function SendChat({model}) {
           
             setErrors(false);
         } 
+
+        // if ( response.resCode === "429" )
+        // {
+        //     setErrors( true );
+        //     setSuccess( false );
+        // }
         
         if (response.resCode === "500") {
             setSuccess(false);
