@@ -29,6 +29,15 @@
 
 - To run this code and secure sensitive informations(such as API key, backend server url, DB access information, etc), use env file.
 - make .env file and put the informations in it.
+- All the Environment Variables can be access by process.env.
+
+```
+// .env
+API_KEY=123456789
+
+// code
+const apiKey = process.env.API_KEY;
+```
 
 ## Run on Development Environments
 
