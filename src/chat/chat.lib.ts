@@ -43,12 +43,13 @@ export const chatRequest = async(
 
     const options = {
         headers: {
-            "Content-Type": "application/json", 
+            "Content-Type": "application/json",
+            // Chat-GPT API Key. Can be replaced own authentication key if you have your own model
             key: process.env.NEXT_PUBLIC_KEY!
         },
         // HTTP Method: POST
         method: "POST",
-        
+
         // BODY Parameters
         body: JSON.stringify({
             model,
