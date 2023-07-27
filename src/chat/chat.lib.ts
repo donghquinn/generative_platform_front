@@ -9,6 +9,22 @@ interface ResultArray {
 }
 
 
+/**
+ * Request Chat Response
+ * @param model Required. Select Large Language Model.
+ * @param content Required. User Queries.
+ * @param number Required. Numbers to generate
+ * @param name 
+ * @param temperature 
+ * @param topP 
+ * @param stream 
+ * @param stop 
+ * @param maxTokens 
+ * @param presencePenalty 
+ * @param frequencyPenalty 
+ * @param user 
+ * @returns Model's Response
+ */
 export const chatRequest = async(
     model: string, 
     content: string, 

@@ -23,8 +23,8 @@ function SendImage({size, imgNumber}) {
     
     const request = async() => {
         setSent(true);
-
-        const imageResponse = await requestImg(prompt,imgNumber, size);
+        // Request Image Generate
+        const imageResponse = await requestImg(prompt, imgNumber, size);
 
         console.log(imageResponse.resCode);
         // console.log(response.dataRes[0].response);

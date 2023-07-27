@@ -10,6 +10,15 @@ export interface ResultArray {
     result: Array<string | undefined> | null;
 }
 
+/**
+ * Request Image Generate
+ * @param prompt Required. User Query. Only ENGLISH Allowed so far
+ * @param number Required. Numbers to generate
+ * @param size Image Size: 256x256, 512x512, 1024x1024
+ * @param responseFormat optional. Response Format
+ * @param user: optional.
+ * @returns Image Generator's Response.
+ */
 export const requestImg = async(prompt: string, number: string, size?: Sizes, responseFormat?: Formats, user?: string) => {
     const url = process.env.NEXT_PUBLIC_IMAGE_URL;
 
@@ -33,6 +42,7 @@ export const requestImg = async(prompt: string, number: string, size?: Sizes, re
     return response;
 }
 
+// WIP
 export const editImage = async(selectedImage: string, prompt: string, number: string, size?: string ) => {
     const url = process.env.NEXT_PUBLIC_EDIT_IMAGE_URL;
 
