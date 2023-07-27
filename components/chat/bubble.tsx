@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 function ChatBubble({message, response}) {
     // const [response, setResponse] = useRecoilState(responseRecoil);
 

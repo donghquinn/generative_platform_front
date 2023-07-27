@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SendImage from "../components/image/generate/image";
-import { Sizes } from "../src/image.type";
+import { Sizes } from "../src/types/image.type";
 
 function Img() {
  // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];

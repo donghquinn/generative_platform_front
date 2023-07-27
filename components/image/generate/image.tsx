@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { requestImg } from "../../../src/image.lib";
-import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../../../src/image.recoil";
+import { requestImg } from "../../../src/image/image.lib";
+import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../../../src/image/image.recoil";
 import ErrorBubble from "../../error/bubble.error";
 import ImageBubble from "./imgbubble";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UploadImage from "../components/image/edit/upload";
-import { Sizes } from "../src/image.type";
+import { Sizes } from "../src/types/image.type";
 
 function ImageUploader() {
     const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];

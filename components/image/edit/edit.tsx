@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { ImageReseponse, editImage, requestEdit } from "../src/image.lib";
-import { imageEditFile, imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil, imageUpload } from "../src/image.recoil";
+import { ImageReseponse, editImage, requestEdit } from "../../../src/image/image.lib";
+import { imageEditFile, imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil, imageUpload } from "../../../src/image/image.recoil";
 import EditBubble from "./edit.bubble";
-import ErrorBubble from "./error/bubble.error";
+import ErrorBubble from "../../error/bubble.error";
 
 // Not Completed Component
 function EditImage({size, imgNumber}) {

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { chatRequest } from "../src/chat.lib";
-import { errMsgRecoil, requestSuccess, responseRecoil } from "../src/chat.recoil";
+import { chatRequest } from "../../src/chat/chat.lib";
+import { errMsgRecoil, requestSuccess, responseRecoil } from "../../src/chat/chat.recoil";
 import ChatBubble from "./bubble";
-import ErrorBubble from "./error/bubble.error";
-import ImageBubble from "./imgbubble";
+import ErrorBubble from "../error/bubble.error";
 
 function SendChat({model}) {
     const [sent, setSent] = useState(false);
