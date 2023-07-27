@@ -5,7 +5,7 @@ import { imageEditFile, imageErrMsgRecoil, imageRequestSuccess, imageResponseRec
 import EditBubble from "./edit.bubble";
 import ErrorBubble from "./error/bubble.error";
 
-
+// Not Completed Component
 function EditImage({size, imgNumber}) {
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(imageRequestSuccess);

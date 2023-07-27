@@ -5,7 +5,7 @@ import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../
 import ErrorBubble from "./error/bubble.error";
 import ImageBubble from "./imgbubble";
 
-
+// Send Image request and shows the response
 function SendImage({size, imgNumber}) {
     const [sent, setSent] = useState(false);
     const [success, setSuccess] = useRecoilState(imageRequestSuccess);

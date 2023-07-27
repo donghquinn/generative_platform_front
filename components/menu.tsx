@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 
+// Menu Component
 const menuList = ["Chat", "Image", "Edit"];
 
 function Menu () {
@@ -10,11 +11,13 @@ function Menu () {
             <div className="flex-1 px-2 lg:flex-none">
                 <a className="text-lg font-bold btn" onClick={() =>  router.push("/")}>IMLAB</a>
             </div> 
-        <div className="flex justify-end flex-1 px-2">
+            <div className="flex justify-end flex-1 px-2">
+                // Make Menu visible, and define its onClick function.
             {menuList.map((item) => {
                 if (item ==="Chat") {
                     return(
                         <div key={item} className="flex items-stretch">
+                            // Move to /chat page
                                 <a className="btn btn-ghost rounded-btn" onClick={() => {router.push("/chat")}}>{item}</a>
                         </div>
                     )

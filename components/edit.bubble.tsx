@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+// Not Completed Component
 function EditBubble({selectedImage, message, response}) {
     return (
         <div>
