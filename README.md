@@ -6,7 +6,7 @@
 
 - You should have chat-GPT API Key
 - Or have your own LLM(Large Language Model)
-  - In this case, the body requirements would be different agains open-ai's.
+  - In this case, the body parameters would be different with open-ai's.
   - You have to customize the requesting functions by yourself.
 - This codes are written on Node.JS 18.12.1. I recommend you to run this code over version 18 over.
 - All the dependencies are managed by Yarn berry.
