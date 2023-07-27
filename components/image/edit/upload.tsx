@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { requestEdit } from "../src/image.lib";
+import { requestEdit } from "../../../src/image.lib";
 import Image from "next/image";
 
 // Not Completed Component. Purposed to upload image file to make variations 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UploadImage from "../components/upload";
+import UploadImage from "../components/image/edit/upload";
 import { Sizes } from "../src/image.type";
 
 function ImageUploader() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SendImage from "../components/image";
+import SendImage from "../components/image/generate/image";
 import { Sizes } from "../src/image.type";
 
 function Img() {

@@ -1,7 +1,7 @@
 import '../styles/global.css';
 import React from 'react';
 import Head from 'next/head';
-import Menu from '../components/menu';
+import Menu from '../components/common/menu';
 import { RecoilRoot } from 'recoil';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
