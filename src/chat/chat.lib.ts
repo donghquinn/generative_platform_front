@@ -38,6 +38,7 @@ export const chatRequest = async(
     presencePenalty?: number, 
     frequencyPenalty?: number, 
     user?: string) => {
+    // LLM's URL
     const url = process.env.NEXT_PUBLIC_CHAT_URL;
 
     const options = {
@@ -45,7 +46,10 @@ export const chatRequest = async(
             "Content-Type": "application/json", 
             key: process.env.NEXT_PUBLIC_KEY!
         },
+        // HTTP Method: POST
         method: "POST",
+        
+        // BODY Parameters
         body: JSON.stringify({
             model,
             content, 
