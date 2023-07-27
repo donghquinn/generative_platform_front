@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { requestImg } from "../src/image.lib";
-import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../src/image.recoil";
-import ErrorBubble from "./error/bubble.error";
+import { requestImg } from "../../../src/image.lib";
+import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../../../src/image.recoil";
+import ErrorBubble from "../../error/bubble.error";
 import ImageBubble from "./imgbubble";
 
 // Send Image request and shows the response
@@ -37,6 +37,7 @@ function SendImage({size, imgNumber}) {
             setErrors(false);
         } 
    
+        // Error Handling
         if (imageResponse.resCode === "500") {
             setSuccess(false);
             setSent(false);
@@ -57,6 +58,7 @@ function SendImage({size, imgNumber}) {
         )
     };
 
+    // Error Handling
     if (errors) {
         return(
             <div>

@@ -1,4 +1,4 @@
-
+// Error Bubble.
 function ErrorBubble({message, errMsg}) {
     return (
       <div>

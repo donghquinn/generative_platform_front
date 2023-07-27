@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 function ImageBubble({message, response}) {
     return (
         <div>
