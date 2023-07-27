@@ -16,7 +16,7 @@
 - pages: All the pages should be saved this folder.
   - "index.tsx" file is the main landing-page.
   - "\_app.tsx" file is the rendering page. Typically defines CSS files, scripts, web sites' title here.
-    - This file will be loaded between pages. So you can load styles, images, and other stuffs every rendering moment which is globally adapted.
+    - This file will be loaded between pages. So you can load styles, images, and other stuffs every rendering moment which is globally aplied.
 - components: Components codes are saved here. The folder name is not mandatory rule.
 - src: Functions are saved here. I saved requesting functions and interface files here.
 
