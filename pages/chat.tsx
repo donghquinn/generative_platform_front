@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SendChat from "../components/chat";
+import SendChat from "../components/chat/chat";
 
-
+// Chat page
 function Chat() {
     // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
     const modelArray = ["gpt-3.5-turbo"];
@@ -9,7 +9,7 @@ function Chat() {
     // const [showDropdown, setShowDropDown] = useState(false);
 
     const [model, setModel] = useState<string>();
-    const [ment, setMent] = useState("Select Model")
+    const [ment, setMent] = useState("Select Model");
 
     return (
         <div>

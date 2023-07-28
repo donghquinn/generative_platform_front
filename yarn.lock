@@ -2123,7 +2123,11 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     recoil: ^0.7.7
+<<<<<<< HEAD
     tailwindcss: ^3.3.3
+=======
+    tailwindcss: ^3.3.2
+>>>>>>> 22c051c1680be82a778e562af53686f7ecf45d9e
     typescript: ^5.1.6
   languageName: unknown
   linkType: soft

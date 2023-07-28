@@ -4,6 +4,7 @@ interface ModelReseponse {
     errMsg: string | string[]
 };
 
+// Request Models available
 export const getModels = async() => {
 
     const modelUrl = process.env.NEXT_PUBLIC_MODEL_URL;
