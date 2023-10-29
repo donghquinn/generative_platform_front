@@ -29,13 +29,13 @@ function Menu ({logo}) {
                     )
                 }
 
-                if (item ==="Edit") {
-                    return (
-                        <div key={item} className="flex items-stretch">
-                            <a className="btn btn-ghost rounded-btn" onClick={() => router.push("/edit")}>{item}</a>
-                        </div>
-                    )
-                }
+                // if (item ==="Edit") {
+                //     return (
+                //         <div key={item} className="flex items-stretch">
+                //             <a className="btn btn-ghost rounded-btn" onClick={() => router.push("/edit")}>{item}</a>
+                //         </div>
+                //     )
+                // }
             })}
         </div>
     </div>

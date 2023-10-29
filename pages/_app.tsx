@@ -31,7 +31,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       </Head>
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
      crossOrigin="anonymous"></Script>
-
         <RecoilRoot>
         <Menu logo={logo}></Menu>
           <Component {...pageProps} />
