@@ -6,7 +6,6 @@ import Menu from '../components/common/menu';
 import { RecoilRoot } from 'recoil';
 import Script from 'next/script';
 import { Metadata } from 'next';
-import logo from '../public/logo.png';
 
 export const metadata: Metadata = {
   title: "dong-GPT",
@@ -32,7 +31,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
      crossOrigin="anonymous"></Script>
         <RecoilRoot>
-        <Menu logo={logo}></Menu>
+        <Menu></Menu>
           <Component {...pageProps} />
         </RecoilRoot>
     </>

@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import logo from '../../public/logo.png';
+
 // Menu Component
 const menuList = ["Chat", "Image", "Edit"];
 // className="text-lg font-bold btn"
-function Menu ({logo}) {
+function Menu () {
     const router = useRouter();
 
     return (
