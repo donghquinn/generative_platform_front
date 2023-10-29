@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { Sizes } from "./image.type";
+import { Sizes } from "../types/image.type";
 
 export const imageRecoil = atom({
     key: "imageRecoil",
