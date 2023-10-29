@@ -1,15 +1,16 @@
 import { useRouter } from "next/router";
-
+import logo from '../../public/logo.png';
+import Image from "next/image";
 // Menu Component
 const menuList = ["Chat", "Image", "Edit"];
-
+// className="text-lg font-bold btn"
 function Menu () {
     const router = useRouter();
 
     return (
         <div className="navbar bg-base-300 rounded-box">
             <div className="flex-1 px-2 lg:flex-none">
-                <a className="text-lg font-bold btn" onClick={() =>  router.push("/")}>IMLAB</a>
+                <Image src={logo} alt="logo" onClick={() =>  router.push("/")}>IMLAB</Image>
             </div> 
             <div className="flex justify-end flex-1 px-2">
             {menuList.map((item) => {
