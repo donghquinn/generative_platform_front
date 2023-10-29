@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SendChat from "../components/chat/chat";
+import Script from "next/script";
 
 // Chat page
 function Chat() {
@@ -38,7 +39,7 @@ function Chat() {
 
             </div>
           
-                        <SendChat model={model}></SendChat>
+                <SendChat model={model}></SendChat>
                 
             </div>
         </div>
