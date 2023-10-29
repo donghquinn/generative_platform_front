@@ -1,6 +1,5 @@
 import { useState } from "react";
 import SendChat from "../components/chat/chat";
-import Script from "next/script";
 
 // Chat page
 function Chat() {

@@ -80,7 +80,7 @@ function EditImage({size, imgNumber}) {
             <div>
             <div>
                 <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {handleImageEdit()}}>보내기</button>
+                <button className="btn" style={{marginTop: "2%"}} onClick={handleImageEdit}>보내기</button>
             </div>
             <div>
                 <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
