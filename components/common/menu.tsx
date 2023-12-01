@@ -18,6 +18,7 @@ function Menu () {
                 
             </div> 
             <div className="flex justify-end flex-1 px-2">
+                
             {menuList.map((item) => {
                 if (item ==="Chat") {
                     return(
@@ -38,7 +39,7 @@ function Menu () {
                 if (item ==="S-R") {
                     return (
                         <div key={item} className="flex items-stretch">
-                            <Link className="btn btn-ghost rounded-btn" onClick={() => router.reload()} href={"/resolution"}>{item}</Link>
+                            <Link className="btn btn-ghost rounded-btn"  href={"/resolution"}>{item}</Link>
                         </div>
                     )
                 }

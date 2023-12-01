@@ -1,15 +1,14 @@
 interface ModelReseponse {
-    resCode: string;
-    dataRes: string[] | null;
-    errMsg: string | string[]
-};
+  resCode: string;
+  dataRes: string[] | null;
+  errMsg: string | string[];
+}
 
 // Request Models available
-export const getModels = async() => {
+export const getModels = async () => {
+  const modelUrl = process.env.NEXT_PUBLIC_MODEL_URL;
 
-    const modelUrl = process.env.NEXT_PUBLIC_MODEL_URL;
+  const response = (await (await fetch(modelUrl)).json()) as ModelReseponse;
 
-    const response = await (await fetch(modelUrl)).json() as ModelReseponse;
-
-    return response;
-}
+  return response;
+};

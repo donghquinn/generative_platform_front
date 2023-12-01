@@ -1,22 +1,22 @@
 import { useRef, useState } from "react";
 import  Image  from 'next/image';
-import { sendImageFile } from "../src/resolution/send.lib";
-
-
+import { ImageResUploadResponse } from "../src/types/res.type";
         
 const SuperResolution = () =>
 {
-    const [image, setImage] = useState('')
+    const [ image, setImage ] = useState( '' );
+    const [ weight, setWeight ] = useState( "psnr-small" );
     const fileInput = useRef( null );
 
     const weights = [ "psnr-small", "psnr-large", "gans", "noise-cancel" ]
 
-    const resUrl = process.env.NEXT_PUBLIC_RES_URL!
+    const upUrl = process.env.NEXT_PUBLIC_RES_UPLOAD_URL!;
+    const resUrl = process.env.NEXT_PUBLIC_RES_URL!;
 
     const handleImage = async ( e: any ) =>
     {
         // 내가 받을 파일은 하나기 때문에 index 0값의 이미지를 가짐
-        const file = e.target.files[ 0 ];
+        const file = e.target.file;
         if ( !file ) return;
     
         // 이미지 화면에 띄우기
@@ -35,26 +35,52 @@ const SuperResolution = () =>
         const formData = new FormData();
 
         formData.append( "image", file );
-        
 
         const options = {
             method: "POST",
             body: formData,
         };
 
-        const response = await fetch( resUrl, options );
+        const { uuid, versionId, uploadedFileName } = await ( await fetch( upUrl, options ) ).json() as ImageResUploadResponse;
+        
+        const options2 = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                uuid,
+                fileName: uploadedFileName,
+                weights: weight,
+                versionId,
+            }),
+        }
+
+        const resResult = await (await fetch(resUrl, options2)).json()
     }
           
 
     return (
         <div>
+<ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                {weights.map( ( item ) =>
+                {
+                    return (
+                        <div key={item}>
+                            <button onClick={() => setWeight(item)}>{item}</button>
+                        </div>
+                    )
+                })}
+            </ul>
     	<a href="#" onClick={() => fileInput.current.click() } >
     		<Image src={image} width={150} height={150} alt="프로필 이미지" />
             </a>
             
+            
             <label htmlFor="input-file" >Select the Image</label>
         <input type="file" name="image_URL" id="input-file" accept='image/*'
-		style={{ display : "none" }} ref={fileInput} onChange={handleImage} />
+                style={{ display: "none" }} ref={fileInput} onChange={handleImage} />
+    
         </div>
     )
 };
