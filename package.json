@@ -2,7 +2,7 @@
   "name": "gpt-front",
   "version": "1.5.0",
   "license": "MIT",
-  "packageManager": "yarn@4.0.1",
+  "packageManager": "yarn@4.0.2",
   "scripts": {
     "lint": "next lint",
     "build": "next build",
