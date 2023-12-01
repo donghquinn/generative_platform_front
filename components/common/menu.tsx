@@ -1,13 +1,14 @@
-import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from '../../public/logo.png';
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 // Menu Component
 const menuList = ["Chat", "Image", "Edit", "S-R"];
 // className="text-lg font-bold btn"
 function Menu () {
-
+    const router = useRouter()
+    
     return (
         <div className="navbar bg-base-300 rounded-box">
             <div className="flex-1 px-2 lg:flex-none">
@@ -21,7 +22,7 @@ function Menu () {
                 if (item ==="Chat") {
                     return(
                         <div key={item} className="flex items-stretch">
-                                <Link className="btn btn-ghost rounded-btn" href={"/chat"}>{item}</Link>
+                            <Link className="btn btn-ghost rounded-btn" onClick={() => router.reload()} href={"/chat"}>{item}</Link>
                         </div>
                     )
                 }
@@ -29,7 +30,7 @@ function Menu () {
                 if (item === "Image") {
                     return (
                         <div key={item} className="flex items-stretch">
-                                <Link className="btn btn-ghost rounded-btn" href={"/generate"}>{item}</Link>
+                            <Link className="btn btn-ghost rounded-btn" onClick={() => router.reload()} href={"/generate"}>{item}</Link>
                         </div>
                     )
                 }
@@ -37,7 +38,7 @@ function Menu () {
                 if (item ==="S-R") {
                     return (
                         <div key={item} className="flex items-stretch">
-                            <Link className="btn btn-ghost rounded-btn" href={"/resolution"}>{item}</Link>
+                            <Link className="btn btn-ghost rounded-btn" onClick={() => router.reload()} href={"/resolution"}>{item}</Link>
                         </div>
                     )
                 }
