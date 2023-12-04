@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { ImageResUploadResponse } from "../src/types/res.type";
-        
+import Image from "next/image";
+
 const SuperResolution = () =>
 {
     const [ weight, setWeight ] = useState( "psnr-small" );
-    
+    const [ url, setUrl ] = useState( "" );
     const weights = [ "psnr-small", "psnr-large", "gans", "noise-cancel" ]
 
     const formData = new FormData();
@@ -26,16 +27,11 @@ const SuperResolution = () =>
 
         const response = await fetch( upUrl, options );
 
-        console.log( "Response: %o", { ok: response.ok, status: response.status, text: response.text, statusText: response.statusText } );
-
-
-            console.log( "Response: %o", { ok: response.ok } );
-
         const response2 = await response.json() as ImageResUploadResponse;
         
         const { uuid, versionId, uploadedFileName } = response2.dataRes;
             
-        console.log( "VersionId: %o", { versionId } );
+        console.log( "VersionId: %o", { response: response2.dataRes, } );
         
        
         if ( versionId !== undefined ) {
@@ -54,7 +50,8 @@ const SuperResolution = () =>
             }
 
             const resResult = await ( await fetch( resUrl, options2 ) ).json();
-
+            console.log( resResult );
+            setUrl( resResult.dataRes );
             return resResult;
         }
     }
@@ -89,6 +86,7 @@ const SuperResolution = () =>
                     )
                 })}
             </ul>
+            <Image src={url} alt="resoluted"></Image>
          <form onSubmit={handleSubmit}>
       <input type="file" name="file" accept="image/*" />
       <button type="submit">Upload Image</button>
