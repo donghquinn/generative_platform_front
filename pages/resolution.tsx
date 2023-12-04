@@ -12,7 +12,8 @@ const SuperResolution = () =>
 
     const upUrl = process.env.NEXT_PUBLIC_RES_UPLOAD_URL!;
     const resUrl = process.env.NEXT_PUBLIC_RES_URL!;
-
+    const formData = new FormData();
+    
     const handleImage = async ( e: any ) =>
     {
         // 내가 받을 파일은 하나기 때문에 index 0값의 이미지를 가짐
@@ -32,21 +33,32 @@ const SuperResolution = () =>
                 setImage( e.target.result );
             }
         };
-        const formData = new FormData();
+   
 
         formData.append( "image", file );
+    }
 
-        const options = {
-            method: "POST",
+    const requesting = async () =>
+    {
+        const key = process.env.NEXT_PUBLIC_KEY!;
+
+                const options = {
+                    method: "POST",
+                    headers: {
+                        key,
+                    },
             body: formData,
         };
 
         const { uuid, versionId, uploadedFileName } = await ( await fetch( upUrl, options ) ).json() as ImageResUploadResponse;
+
+
         
         const options2 = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                     key,
             },
             body: JSON.stringify({
                 uuid,
@@ -80,7 +92,7 @@ const SuperResolution = () =>
             <label htmlFor="input-file" >Select the Image</label>
         <input type="file" name="image_URL" id="input-file" accept='image/*'
                 style={{ display: "none" }} ref={fileInput} onChange={handleImage} />
-    
+        <button onClick={() => requesting()}>Sendit</button>
         </div>
     )
 };
