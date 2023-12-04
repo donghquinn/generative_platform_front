@@ -1,5 +1,9 @@
-export interface ImageResUploadResponse {
-  uuid: string;
+export interface ImageResUploadResponse
+{
+  dataRes: {
+      uuid: string;
   versionId: string;
   uploadedFileName: string;
+  }
+
 }
