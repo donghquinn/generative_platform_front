@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
-import  Image  from 'next/image';
+import { useState } from "react";
 import { ImageResUploadResponse } from "../src/types/res.type";
         
 const SuperResolution = () =>
-{    const [ weight, setWeight ] = useState( "psnr-small" );
-        const weights = [ "psnr-small", "psnr-large", "gans", "noise-cancel" ]
+{
+    const [ weight, setWeight ] = useState( "psnr-small" );
+    
+    const weights = [ "psnr-small", "psnr-large", "gans", "noise-cancel" ]
 
     const formData = new FormData();
 
@@ -34,11 +35,10 @@ const SuperResolution = () =>
         
         const { uuid, versionId, uploadedFileName } = response2.dataRes;
             
-            console.log( "VersionId: %o", { versionId } );
+        console.log( "VersionId: %o", { versionId } );
         
        
- if ( versionId !== undefined )
-            {
+        if ( versionId !== undefined ) {
                 const options2 = {
                 method: 'POST',
                 headers: {
@@ -56,7 +56,6 @@ const SuperResolution = () =>
             const resResult = await ( await fetch( resUrl, options2 ) ).json();
 
             return resResult;
-            
         }
     }
           
@@ -77,8 +76,10 @@ const SuperResolution = () =>
     }
   };
 
-    return (<div>
-      <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+    return (
+        <div>
+            <ul tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                 {weights.map( ( item ) =>
                 {
                     return (
@@ -93,10 +94,7 @@ const SuperResolution = () =>
       <button type="submit">Upload Image</button>
     </form>
   </div>
-   
   );
-    
-   
 };
 
 export default SuperResolution;
