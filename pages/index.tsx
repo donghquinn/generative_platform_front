@@ -22,10 +22,10 @@ function Home() {
             <div className="flex flex-col space-y-2 px-2">
                 <div className="flex justify-center">
                     <Link href={"/chat"}>
-                        <button className="btn btn-outline" style={{marginTop: "5%", marginRight: "3%"}} onClick={() => router.reload()} >Generate Chats</button>
+                        <button className="btn btn-outline" style={{marginTop: "5%", marginRight: "3%"}} >Generate Chats</button>
                     </Link>
                     <Link href={"/generate"}>
-                        <button className="btn btn-outline btn-primary"style={{marginTop: "5%", marginLeft: "3%"}} onClick={() =>  router.reload()}>Generate Images</button>
+                        <button className="btn btn-outline btn-primary"style={{marginTop: "5%", marginLeft: "3%"}} >Generate Images</button>
                     </Link>
                 </div>
             </div>
