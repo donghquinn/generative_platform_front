@@ -11,4 +11,4 @@ RUN yarn install
 
 RUN yarn run build
 
-ENTRYPOINT ["node", "/home/node/.next/standalone/server.js"]
+ENTRYPOINT ["yarn", "start"]
