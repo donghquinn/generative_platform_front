@@ -1,8 +1,11 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import SendChat from "../components/chat/chat";
 
 // Chat page
-function Chat() {
+function Chat ()
+{
+    const SendChat = dynamic( () => import( "../components/chat/chat" ) );
+    
     // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
     const modelArray = ["gpt-3.5-turbo"];
 

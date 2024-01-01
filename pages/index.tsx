@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 // Main Landing Page
 function Home() {
-    const router = useRouter();
     
     return (
         <div>

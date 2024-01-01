@@ -24,7 +24,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    "public/**/*.mp3"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"

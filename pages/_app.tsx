@@ -1,12 +1,11 @@
 import '../styles/global.css';
 
+import dynamic from "next/dynamic";
 import React from 'react';
 import Head from 'next/head';
-import Menu from '../components/common/menu';
 import { RecoilRoot } from 'recoil';
 import Script from 'next/script';
 import { Metadata } from 'next';
-import Footer from '../components/common/footer';
 
 export const metadata: Metadata = {
   title: "dong-GPT",
@@ -22,7 +21,11 @@ export const metadata: Metadata = {
   
 }
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp ( { Component, pageProps: { session, ...pageProps } } )
+{
+  const Menu = dynamic( () => import( "../components/common/menu" ) );
+  const Footer = dynamic( () => import( "../components/common/footer" ) );
+  
   return (
     <>
       <Head>
