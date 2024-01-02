@@ -167,4 +167,4 @@ const SuperResolution = () =>
     
 };
 
-// export default SuperResolution;
+export default SuperResolution;
