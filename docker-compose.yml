@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     expose:
-      - 5543
+      - 3000
     networks:
       - proxy
 networks:
