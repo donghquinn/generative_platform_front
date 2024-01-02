@@ -3,7 +3,7 @@ import { ImageResUploadResponse } from "../src/types/res.type";
 import Image from "next/image";
 
 const SuperResolution = () =>
-{
+{    console.log( "Deactivate SR Page" );
     const [ weight, setWeight ] = useState( "psnr-small" );
     const [ url, setUrl ] = useState( "Not Yet" );
     const [ image, setImage ] = useState( "" );
@@ -167,4 +167,4 @@ const SuperResolution = () =>
     
 };
 
-export default SuperResolution;
+// export default SuperResolution;
