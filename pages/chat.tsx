@@ -1,3 +1,4 @@
+import { Select } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
@@ -21,23 +22,12 @@ function Chat ()
         <div className="flex justify-center">
             <div className="dropdown" style={{marginBottom: "5%", marginTop:"5%"}}>
                 <h1 style={{fontSize: "150%"}}>Select Models</h1>
-                <label tabIndex={0} className="btn m-1">
-                    {ment}
-                </label>
-                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                    {modelArray.map((item) => {
-                        return (
-                            <div key={item}>
-                                <li >
-                                    <a onClick={(event) => { 
-                                        setModel(item)
-                                        setMent(item)
-                                        }}>{item}</a>
-                                </li>
-                            </div>
-                        )
-                    })}
-                </ul>
+                        <Select
+                            label="Select Model"
+                            placeholder="Select Model"
+                            data={modelArray}
+                            onChange={setModel}
+                        ></Select>
             </div>
 
             </div>

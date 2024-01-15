@@ -6,6 +6,10 @@ import Head from 'next/head';
 import { RecoilRoot } from 'recoil';
 import Script from 'next/script';
 import { Metadata } from 'next';
+import { createTheme, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+
+import type { AppProps } from 'next/app';
 
 export const metadata: Metadata = {
   title: "dong-GPT",
@@ -21,23 +25,30 @@ export const metadata: Metadata = {
   
 }
 
-function MyApp ( { Component, pageProps: { session, ...pageProps } } )
+function MyApp ({ Component, pageProps }: AppProps )
 {
   const Menu = dynamic( () => import( "../components/common/menu" ) );
   const Footer = dynamic( () => import( "../components/common/footer" ) );
   
+  const theme = createTheme({
+    /** Put your mantine theme override here */
+  });
+
   return (
     <>
+            <RecoilRoot>
       <Head>
         <title>donghquinn ChatGPT</title>
         <metadata ></metadata>
       </Head>
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
      crossOrigin="anonymous"></Script>
-        <RecoilRoot>
+
+        <MantineProvider theme={theme}>
         <Menu></Menu>
         <Component {...pageProps} />
-        <Footer></Footer>
+          <Footer></Footer>
+          </MantineProvider>
         </RecoilRoot>
     </>
   );

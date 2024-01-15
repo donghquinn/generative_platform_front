@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Sizes } from "../src/types/image.type";
+import { Select } from "@mantine/core";
 
 // Image Generate Page
 function Img ()
@@ -18,6 +19,7 @@ function Img ()
 
  const [imgNumber, setNumber] = useState("1");
  const [imgMent, setImgMent] = useState("Select Number");
+ 
 
  return (
      <div>
@@ -25,47 +27,35 @@ function Img ()
      <div className="flex justify-center">
          <div className="dropdown" style={{marginBottom: "1%", marginTop:"5%"}}>
              <h1 style={{fontSize: "150%"}}>Select Size</h1>
-             <label tabIndex={0} className="btn m-1">
+             {/* <label tabIndex={0} className="btn m-1">
                  {ment}
-             </label>
-             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                 {sizeArray.map((item) => {
-                     return (
-                         <div key={item}>
-                             <li>
-                                <a onClick={(event) => { 
-                                 setSize(item)
-                                 setMent(item)
-                                 }}>{item}</a>
-                             </li>
-                         </div>
-                     )
-                 })}
-             </ul>
+             </label> */}
+                     {/* <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"> */}
+                           <Select
+                                 label="Select Size"
+                                 placeholder="Select Image Size"
+                                 data={sizeArray}
+                                 onChange={setSize}
+                             ></Select>
+               
+             {/* </ul> */}
          </div>
          </div>
          <div className="flex flex-col space-y-2 px-2">
          <div className="flex justify-center">
          <div className="dropdown" style={{marginBottom: "1%", marginTop:"1%"}}>
              <h1 style={{fontSize: "150%"}}>Select Number of Images</h1>
-             <label tabIndex={0} className="btn m-1">
+             {/* <label tabIndex={0} className="btn m-1">
                  {imgMent}
-             </label>
-             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                 {imgNumberArray.map((item) => {
-                     return (
-                         <div key={item}>
-                             <li >
-                             <a onClick={(event) => { 
-                                 setNumber(item)
-                                 setImgMent(item)
-                                 }}>{item}</a></li>
-                         </div>
-                     )
-                 })}
-             </ul>
+             </label> */}
+                <Select
+                    label="Select Image Number"
+                    placeholder="How many Images"
+                    data={imgNumberArray}
+                    onChange={setNumber}
+                ></Select>
                 </div>
-                </div>
+            </div>
          </div>
              <div className="flex flex-col space-y-2 px-2">
                  <div className="flex justify-center">

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import {Image} from "@mantine/core";
 
 function ImageBubble({message, response}) {
     return (
@@ -10,7 +10,7 @@ function ImageBubble({message, response}) {
                 return (
                     <div key={item} className="chat chat-end">
                         <div className="chat-bubble" style={{"whiteSpace": "pre-line"}}>
-                            <Image src={item} alt='image'></Image>
+                            <Image radius="md" src={item} alt='image' h={200} w={200}></Image>
                         </div> 
                      </div>
                 )   
