@@ -1,14 +1,12 @@
 import '../styles/global.css';
 
-import dynamic from "next/dynamic";
-import React from 'react';
-import Head from 'next/head';
-import { RecoilRoot } from 'recoil';
-import Script from 'next/script';
-import { Metadata } from 'next';
 import { createTheme, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
-
+import { Metadata } from 'next';
+import dynamic from "next/dynamic";
+import Head from 'next/head';
+import Script from 'next/script';
+import { RecoilRoot } from 'recoil';
 import type { AppProps } from 'next/app';
 
 export const metadata: Metadata = {
@@ -48,7 +46,7 @@ function MyApp ({ Component, pageProps }: AppProps )
         <Menu></Menu>
         <Component {...pageProps} />
           <Footer></Footer>
-          </MantineProvider>
+        </MantineProvider>
         </RecoilRoot>
     </>
   );
