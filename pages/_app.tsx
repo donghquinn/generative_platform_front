@@ -29,7 +29,8 @@ function MyApp ({ Component, pageProps }: AppProps )
   const Footer = dynamic( () => import( "../components/common/footer" ) );
   
   const theme = createTheme({
-    /** Put your mantine theme override here */
+    fontFamily: 'Open Sans, sans-serif',
+    primaryColor: 'cyan',
   });
 
   return (
