@@ -14,7 +14,6 @@ function Chat ()
     // const [showDropdown, setShowDropDown] = useState(false);
 
     const [model, setModel] = useState<string>();
-    const [ment, setMent] = useState("Select Model");
 
     return (
         <div>
