@@ -22,7 +22,11 @@ WORKDIR /app
 
 COPY --from=base /app/node_modules ./node_modules
 
-COPY . .
+COPY ./pages /app/pages
+COPY ./components /app/components
+COPY ./public /app/public
+COPY ./styles /app/styles
+COPY ./src /app/src
 
 RUN yarn build
 
