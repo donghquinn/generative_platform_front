@@ -1,7 +1,6 @@
 import Image from "next/image";
-import logo from '../../public/logo.png';
 import Link from "next/link";
-import { useRouter } from "next/router";
+import logo from '../../public/logo.png';
 
 // Menu Component
 // const menuList = ["Chat", "Image", "Edit", "Song","S-R"];
@@ -9,7 +8,6 @@ const menuList = ["Chat", "Image", "Edit"];
 
 // className="text-lg font-bold btn"
 function Menu () {
-    const router = useRouter()
     
     return (
         <div className="navbar bg-base-300 rounded-box">
