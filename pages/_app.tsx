@@ -36,18 +36,22 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } })
 
   return (
     <>
-      <RecoilRoot>
+
         <Head>
           <title>donghquinn ChatGPT</title>
-          <metadata ></metadata>
+        <metadata ></metadata>
+        
         </Head>
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
-      crossOrigin="anonymous"></Script>
+        crossOrigin="anonymous"></Script>
+      <RecoilRoot>
+        <div className='bg-white'>
           <MantineProvider theme={theme}>
           <Menu></Menu>
           <Component {...pageProps} />
             <Footer></Footer>
           </MantineProvider>
+        </div>
         </RecoilRoot>
     </>
   );
