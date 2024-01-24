@@ -2,7 +2,6 @@ import Link from "next/link";
 
 // Main Landing Page
 function Home() {
-    console.log( "Start GPT Page" );
     
     return (
         <div>
