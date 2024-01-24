@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
-import { ImageResUploadResponse } from "../src/types/res.type";
 import Image from "next/image";
+import React from "react";
+import { ImageResUploadResponse } from "../src/types/res.type";
 
 const SuperResolution = () =>
 {    

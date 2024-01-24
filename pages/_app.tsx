@@ -3,6 +3,8 @@ import '@mantine/core/styles.css';
 import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
 
+
+import React from 'react';
 import { createTheme, MantineProvider } from '@mantine/core';
 import { Metadata } from 'next';
 import Head from 'next/head';
@@ -52,8 +54,9 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } })
           <Component {...pageProps} />
             <Footer></Footer>
           </MantineProvider>
+
         </RecoilRoot>
-    </>
+</>
   );
 }
 
