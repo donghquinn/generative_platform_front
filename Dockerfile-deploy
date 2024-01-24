@@ -16,7 +16,7 @@ FROM base AS builder
 
 WORKDIR /home/node
 
-COPY --from=base /app/node_modules /home/node/node_modules
+COPY --from=base /home/node/node_modules /home/node/node_modules
 
 COPY . .
 
