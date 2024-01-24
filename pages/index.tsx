@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
+import Link from "next/link";
+import React from "react";
 
 // Main Landing Page
 function Home() {
-    const router = useRouter();
     
     return (
         <div>
@@ -20,9 +20,12 @@ function Home() {
             </div>
             <div className="flex flex-col space-y-2 px-2">
                 <div className="flex justify-center">
-                    
-                    <button className="btn btn-outline" style={{marginTop: "5%", marginRight: "3%"}} onClick={() => router.push("/chat") }>Generate Chats</button>
-                    <button className="btn btn-outline btn-primary"style={{marginTop: "5%", marginLeft: "3%"}} onClick={() =>  router.push("/generate")}>Generate Images</button>
+                    <Link href={"/chat"}>
+                        <button className="btn btn-outline" style={{marginTop: "5%", marginRight: "3%"}} >Generate Chats</button>
+                    </Link>
+                    <Link href={"/generate"}>
+                        <button className="btn btn-outline btn-primary"style={{marginTop: "5%", marginLeft: "3%"}} >Generate Images</button>
+                    </Link>
                 </div>
             </div>
         </div>

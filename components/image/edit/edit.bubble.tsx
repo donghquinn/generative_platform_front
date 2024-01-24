@@ -17,7 +17,7 @@ function EditBubble({selectedImage, message, response}) {
                 return (
                     <div key={item} className="chat chat-end">
                         <div className="chat-bubble" style={{"whiteSpace": "pre-line"}}>
-                            <img src={item} alt='image'></img>                       
+                            <Image src={item} alt='image'></Image>                       
                         {/* <Link href={item}>
                             <p>{item}</p>
                         </Link> */}

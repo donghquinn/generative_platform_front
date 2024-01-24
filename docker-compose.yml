@@ -3,12 +3,13 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile-deploy
     container_name: gpt-front
     env_file:
       - .env
     expose:
-      - 5543
+      - 3000
+    restart: unless-stopped
     networks:
       - proxy
 networks:

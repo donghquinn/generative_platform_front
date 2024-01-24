@@ -1,0 +1,35 @@
+#
+# --- base image ---
+FROM node:20.3-alpine3.17 as base
+
+WORKDIR /home/node
+
+COPY yarn.lock package.json .yarnrc.yml tsconfig.json  /home/node/
+
+COPY .yarn  /home/node/.yarn
+
+RUN yarn install
+
+
+
+FROM base AS builder
+
+WORKDIR /home/node
+
+COPY --from=base /home/node/node_modules /home/node/node_modules
+
+COPY . .
+
+RUN yarn build
+
+
+
+FROM builder AS runner
+
+WORKDIR /home/node
+
+COPY --from=builder /home/node/.next /home/node
+COPY --from=builder /home/node/node_modules /home/node/node_modules
+COPY ./public /home/node/standalone/public
+
+CMD ["node","/home/node/standalone/server.js"]
