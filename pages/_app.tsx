@@ -22,18 +22,19 @@ export const metadata: Metadata = {
     siteName: 'chat',
     description: "Chat with OpenAi's chat-GPT"
   },
-  
-}
+};
+
+const theme = createTheme( {
+    fontFamily: 'Open Sans, sans-serif',
+    primaryColor: 'cyan',
+  });
 
 function MyApp ({ Component, pageProps: { session, ...pageProps } })
 {
   // const Menu = dynamic( () => import( "../components/common/menu" ) );
   // const Footer = dynamic( () => import( "../components/common/footer" ) );
   
-  const theme = createTheme({
-    fontFamily: 'Open Sans, sans-serif',
-    primaryColor: 'cyan',
-  });
+
 
   return (
     <>
