@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./Dockerfile-deploy
+      dockerfile: ./Dockerfile
     container_name: gpt-front
     env_file:
       - .env
