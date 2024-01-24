@@ -31,32 +31,25 @@ const theme = createTheme( {
     primaryColor: 'cyan',
   });
 
-function MyApp ({ Component, pageProps: { session, ...pageProps } })
-{
-  // const Menu = dynamic( () => import( "../components/common/menu" ) );
-  // const Footer = dynamic( () => import( "../components/common/footer" ) );
-  
-
+function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
 
   return (
     <>
-
-        <Head>
-          <title>donghquinn ChatGPT</title>
-        <metadata ></metadata>
-        
-        </Head>
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
-        crossOrigin="anonymous"></Script>
+      <Head>
+        <title>donghquinn ChatGPT</title>
+      <metadata ></metadata>
+      
+      </Head>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
+      crossOrigin="anonymous"></Script>
       <RecoilRoot>
-          <MantineProvider theme={theme}>
-          <Menu></Menu>
-          <Component {...pageProps} />
-            <Footer></Footer>
-          </MantineProvider>
-
-        </RecoilRoot>
-</>
+        <MantineProvider theme={theme}>
+        <Menu></Menu>
+        <Component {...pageProps} />
+          <Footer></Footer>
+        </MantineProvider>
+      </RecoilRoot>
+    </>
   );
 }
 
