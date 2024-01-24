@@ -2,11 +2,6 @@
 # --- base image ---
 FROM node:20.3-alpine3.17 as base
 
-# install curl/timezone
-RUN apk --no-cache add curl tzdata && \
-  cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
-  echo "Asia/Seoul" > /etc/timezone
-
 # set workdir
 WORKDIR /home/node
 
@@ -28,4 +23,4 @@ COPY . .
 
 RUN yarn run build
 
-ENTRYPOINT ["yarn", "start"]
+CMD ["yarn", "run", "dev"]
