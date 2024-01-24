@@ -36,7 +36,8 @@ FROM builder AS runner
 
 WORKDIR /home/node
 
-COPY ./public /home/node/standalone/public
 COPY --from=builder /app/.next /home/node
+COPY ./public /home/node/standalone/public
+
 
 CMD ["node","/home/node/standalone/server.js"]
