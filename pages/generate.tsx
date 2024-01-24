@@ -6,7 +6,6 @@ import { Select } from "@mantine/core";
 // Image Generate Page
 function Img ()
 {
-        console.log( "Start Image Page" );
     const SendImage = dynamic( () => import( "../components/image/generate/image" ) );
 
  // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
