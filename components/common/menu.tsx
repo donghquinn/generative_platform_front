@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 // Menu Component
-const menuList = ["Chat", "Image", "Edit", "S-R"];
+// const menuList = ["Chat", "Image", "Edit", "Song","S-R"];
+const menuList = ["Chat", "Image", "Edit"];
+
 // className="text-lg font-bold btn"
 function Menu () {
     const router = useRouter()
@@ -36,13 +38,22 @@ function Menu () {
                     )
                 }
 
-                if (item ==="S-R") {
-                    return (
-                        <div key={item} className="flex items-stretch">
-                            <Link className="btn btn-ghost rounded-btn"  href={"/resolution"}>{item}</Link>
-                        </div>
-                    )
-                }
+                // if ( item === "Song" )
+                // {
+                //     return (
+                //         <div key={item} className="flex items-stretch">
+                //             <Link className="btn btn-ghost rounded-btn" href={"/song"}>{item}</Link>
+                //         </div>
+                //     )
+                // }
+
+                // if (item ==="S-R") {
+                //     return (
+                //         <div key={item} className="flex items-stretch">
+                //             <Link className="btn btn-ghost rounded-btn"  href={"/resolution"}>{item}</Link>
+                //         </div>
+                //     )
+                // }
             })}
         </div>
     </div>
