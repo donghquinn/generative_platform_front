@@ -2,7 +2,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   output: "standalone",
-   images: {
+  images: {
     domains: ['oaidalleapiprodscus.blob.core.windows.net'],
   },
   //  experimental: {
