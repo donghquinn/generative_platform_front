@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   
 }
 
-function MyApp ({ Component, pageProps }: AppProps )
+function MyApp ({ Component, pageProps: { session, ...pageProps } })
 {
   // const Menu = dynamic( () => import( "../components/common/menu" ) );
   // const Footer = dynamic( () => import( "../components/common/footer" ) );
