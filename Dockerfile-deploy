@@ -17,15 +17,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY --from=base /app/node_modules ./node_modules
-COPY next.config.js postcss.config.js tailwind.config.js next-env.d.ts /app/
-
-COPY .eslintrc.json .prettierrc /app/
-
-COPY ./pages /app/pages
-COPY ./components /app/components
-COPY ./public /app/public
-COPY ./styles /app/styles
-COPY ./src /app/src
+COPY . .
 
 RUN yarn build
 
@@ -35,8 +27,8 @@ FROM builder AS runner
 
 WORKDIR /home/node
 
-COPY --from=builder /app/.next /home/node
-COPY ./public /home/node/standalone/public
+COPY --from=builder /app/.next /home/node/.next
+COPY ./public /home/node/.next/standalone/public
 
 
-CMD ["node","/home/node/standalone/server.js"]
+CMD ["node","/home/node/.next/standalone/server.js"]
