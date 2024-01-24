@@ -16,9 +16,9 @@ FROM base AS builder
 
 WORKDIR /home/node
 
-COPY --from=base /home/node/node_modules /home/node/node_modules
-
 COPY . .
+
+COPY --from=base /home/node/node_modules /home/node/node_modules
 
 RUN yarn build
 
