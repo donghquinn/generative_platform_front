@@ -6,23 +6,23 @@ WORKDIR /app
 
 COPY yarn.lock package.json .yarnrc.yml /app/
 COPY .yarn  /app/.yarn
-COPY ./public /app/public
 
 RUN yarn install
-
 
 
 FROM base AS builder
 
 WORKDIR /app
 
-
 COPY --from=base /app/node_modules ./node_modules
 
-COPY . .
+COPY ./components /app/components
+COPY ./pages /app/pages
+COPY ./src /app/src
+COPY ./public /app/public
+COPY ./styles /app/styles
 
 RUN yarn build
-
 
 
 FROM builder AS runner
@@ -32,6 +32,5 @@ WORKDIR /home/node
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-
 
 CMD ["node", "server.js"]
