@@ -6,10 +6,6 @@ WORKDIR /app
 
 COPY yarn.lock package.json .yarnrc.yml tsconfig.json  /app/
 
-COPY next.config.js postcss.config.js tailwind.config.js next-env.d.ts /app/
-
-COPY .eslintrc.json .prettierrc /app/
-
 COPY .yarn  /app/.yarn
 
 RUN yarn install
@@ -21,6 +17,9 @@ FROM base AS builder
 WORKDIR /app
 
 COPY --from=base /app/node_modules ./node_modules
+COPY next.config.js postcss.config.js tailwind.config.js next-env.d.ts /app/
+
+COPY .eslintrc.json .prettierrc /app/
 
 COPY ./pages /app/pages
 COPY ./components /app/components
