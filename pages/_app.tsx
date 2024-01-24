@@ -1,9 +1,8 @@
 import '../styles/global.css';
+import '@mantine/core/styles.css';
 
 import { createTheme, MantineProvider } from '@mantine/core';
-import '@mantine/core/styles.css';
 import { Metadata } from 'next';
-import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
 import { RecoilRoot } from 'recoil';
