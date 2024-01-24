@@ -27,7 +27,7 @@ FROM builder AS runner
 
 WORKDIR /home/node
 
-COPY --from=builder /app/.next /home/node/
+COPY --from=builder /app/.next /home/node
 COPY --from=builder /app/node_modules ./node_modules
 COPY ./public /home/node/standalone/public
 
