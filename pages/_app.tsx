@@ -1,29 +1,15 @@
-import '../styles/global.css';
 import '@mantine/core/styles.css';
-import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
+import '@mantine/core/styles/UnstyledButton.css';
+import '../styles/global.css';
 
-import React from 'react';
 import { createTheme, Divider, MantineProvider } from '@mantine/core';
-import { Metadata } from 'next';
 import Head from 'next/head';
 import Script from 'next/script';
 import { RecoilRoot } from 'recoil';
 import Footer from '../components/common/footer';
 import Menu from '../components/common/menu';
 
-export const metadata: Metadata = {
-  title: "dong-GPT",
-  description: "Chat with OpenAi's chat-GPT",
-  keywords: ["chatGPT", "openai", "chat"],
-  authors: [{ name: 'donghquinn' }],
-  creator: 'donghquinn',
-  openGraph: {
-    url: 'https://chat.andongh.com',
-    siteName: 'chat',
-    description: "Chat with OpenAi's chat-GPT"
-  },
-};
 
 const theme = createTheme( {
     fontFamily: 'Open Sans, sans-serif',
@@ -31,13 +17,15 @@ const theme = createTheme( {
   });
 
 function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
-
   return (
     <>
       <Head>
         <title>donghquinn ChatGPT</title>
-      <metadata ></metadata>
-      
+        <meta name='title' content='Generate Platform'/>
+        <meta name='description' content='Generate Chat, Songs, Images, and etc...'/>
+        <meta name='keywords' content='openai, chat, images, songs'/>
+        <meta name='author' content='donghquinn'/>
+        <meta name='creator' content='donghquinn'/>
       </Head>
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
       crossOrigin="anonymous"></Script>
