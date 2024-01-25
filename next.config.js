@@ -1,6 +1,6 @@
 const nextConfig = {
-  // reactStrictMode: true,
-  // swcMinify: true,
+  reactStrictMode: true,
+  swcMinify: true,
   output: "standalone",
   images: {
     domains: ['oaidalleapiprodscus.blob.core.windows.net'],
@@ -9,6 +9,6 @@ const nextConfig = {
   //   // this includes files from the monorepo base two directories up
   //   outputFileTracingRoot: path.join(__dirname, '../../'),
   // },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

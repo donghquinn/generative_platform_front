@@ -2,11 +2,12 @@
 # --- base image ---
 FROM node:20.3-alpine3.17 as base
 
-WORKDIR /home/node
+RUN apk add --no-cache libc6-compat
 
-COPY yarn.lock package.json .yarnrc.yml tsconfig.json  /home/node/
+WORKDIR /app
 
-COPY .yarn  /home/node/.yarn
+COPY yarn.lock package.json .yarnrc.yml /app/
+COPY .yarn  /app/.yarn
 
 RUN yarn install
 
@@ -14,11 +15,11 @@ RUN yarn install
 
 FROM base AS builder
 
-WORKDIR /home/node
+WORKDIR /app
+
+COPY --from=base /app/node_modules ./node_modules
 
 COPY . .
-
-COPY --from=base /home/node/node_modules /home/node/node_modules
 
 RUN yarn build
 
@@ -28,8 +29,19 @@ FROM builder AS runner
 
 WORKDIR /home/node
 
-COPY --from=builder /home/node/.next /home/node
-COPY --from=builder /home/node/node_modules /home/node/node_modules
-COPY ./public /home/node/standalone/public
+ENV NODE_ENV production
 
-CMD ["node","/home/node/standalone/server.js"]
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+# COPY ./public /home/node/standalone/public
+# COPY --from=builder /app/.next /home/node
+
+CMD ["node","server.js"]
