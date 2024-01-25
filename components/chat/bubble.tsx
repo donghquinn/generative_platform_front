@@ -6,12 +6,10 @@ function ChatBubble({message, response}) {
                 <div className="user chatBubble">{message}</div>
             {response.map((item) => {
                 return (
-
                     <div className="bot chatBubble" key={item}
                         style={{ "whiteSpace": "pre-line" }}>
                         <p>{item}</p>
                     </div>
-             
                 )
             })}
         </div>

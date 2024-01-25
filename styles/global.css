@@ -35,3 +35,7 @@ a {
 .bot {
   background-color: #f0f0f0;
 }
+
+.errorChat {
+  background-color: rgb(194, 60, 60);
+}

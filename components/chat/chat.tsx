@@ -36,7 +36,7 @@ function SendChat({model}) {
         //     setSuccess( false );
         // }
         
-        if (response.resCode === "500") {
+        else {
             setSuccess(false);
             setSent(false);
             setErrmsg(response.errMsg);
@@ -50,12 +50,10 @@ function SendChat({model}) {
 
     if (sent) {
         return (
-            <div>
-                <div className="flex flex-col space-y-2 px-2">
-                    <div className="flex justify-center">
-                        <button className="btn loading">Waiting For chatGPT</button>
+      <div className="flex flex-col space-y-2 px-2">
+                <div className="flex justify-center">
+                    <Button loading loaderProps={{ type: 'dots' }}></Button>
                     </div>
-                </div>
             </div>
         )
     };

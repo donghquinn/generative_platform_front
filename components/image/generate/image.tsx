@@ -39,7 +39,7 @@ function SendImage({size, imgNumber}) {
         } 
    
         // Error Handling
-        if (imageResponse.resCode === "500") {
+       else {
             setSuccess(false);
             setSent(false);
             setErrmsg(imageResponse.errMsg);
@@ -53,8 +53,10 @@ function SendImage({size, imgNumber}) {
 
     if (sent) {
         return (
-            <div>
-               <Button loading loaderProps={{ type: 'dots' }}></Button>
+      <div className="flex flex-col space-y-2 px-2">
+                <div className="flex justify-center">
+                    <Button loading loaderProps={{ type: 'dots' }}></Button>
+                    </div>
             </div>
         )
     };
@@ -63,15 +65,27 @@ function SendImage({size, imgNumber}) {
     if (errors) {
         return(
             <div>
-            <div>
-                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                <Button
-      variant="gradient"
-      gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
-    onClick={(event) => {request()}}>보내기</Button>
-            </div>
-            <div>
-                <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
+ <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <div style={{marginRight: "1%"}}>
+                            <TextInput
+                            placeholder="Chat Prompt"
+                            onChange={onChange}
+                        />
+                        </div>
+                        <div>
+                            <Button
+                                variant="gradient"
+                                gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+                                    onClick={( event ) => { request(); }}>보내기
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col space-y-2 px-2">
+                    <div className="flex justify-center">
+                        <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
+                </div>
             </div>
         </div>
         )
