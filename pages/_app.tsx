@@ -42,16 +42,15 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4259757759902386"
       crossOrigin="anonymous"></Script>
       <RecoilRoot>
-        <MantineProvider theme={theme}>
-          <div color='white'>
+        <div className='bg-white'>
+          <MantineProvider theme={theme}>
             <Menu></Menu>
-                      <Divider my="md" />
+            <Divider my="md" />
             <Component {...pageProps} />
-                      <Divider my="md" />
-          <Footer></Footer>
-          </div>
-
-        </MantineProvider>
+            <Divider my="md" />
+            <Footer></Footer>
+          </MantineProvider>
+        </div>
       </RecoilRoot>
     </>
   );
