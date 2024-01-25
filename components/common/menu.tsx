@@ -1,60 +1,60 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from '../../public/logo.png';
+import { Divider } from "@mantine/core";
 
 // Menu Component
 // const menuList = ["Chat", "Image", "Edit", "Song","S-R"];
-const menuList = ["Chat", "Image", "Edit"];
+const menuList = [
+    { name: "Chat", link: "/chat" },
+    { name: "Image", link: "/generate" },
+    // { name: "Edit", link: "/edit" }
+];
 
 // className="text-lg font-bold btn"
 function Menu () {
     
     return (
-        <div className="navbar bg-base-300 rounded-box">
-            <div className="flex-1 px-2 lg:flex-none">
-                <Link href="/">
-                    <Image src={logo} alt="logo" width={50} height={50} />
-                </Link>
-                
-            </div> 
-            <div className="flex justify-end flex-1 px-2">
-                
-            {menuList.map((item) => {
-                if (item ==="Chat") {
-                    return(
-                        <div key={item} className="flex items-stretch">
-                            <Link className="btn btn-ghost rounded-btn" href={"/chat"}>{item}</Link>
-                        </div>
-                    )
-                }
-
-                if (item === "Image") {
-                    return (
-                        <div key={item} className="flex items-stretch">
-                            <Link className="btn btn-ghost rounded-btn" href={"/generate"}>{item}</Link>
-                        </div>
-                    )
-                }
-
-                // if ( item === "Song" )
-                // {
-                //     return (
-                //         <div key={item} className="flex items-stretch">
-                //             <Link className="btn btn-ghost rounded-btn" href={"/song"}>{item}</Link>
-                //         </div>
-                //     )
-                // }
-
-                // if (item ==="S-R") {
-                //     return (
-                //         <div key={item} className="flex items-stretch">
-                //             <Link className="btn btn-ghost rounded-btn"  href={"/resolution"}>{item}</Link>
-                //         </div>
-                //     )
-                // }
-            })}
-        </div>
+  <header className="flex flex-col sm:flex-row justify-between items-center" style={{ backgroundColor: 'white' }}>
+    <div className="navbar-start relative" style={{ marginLeft: '5%' }}>
+      <div className="flex flex-row flex-start cursor-pointer transform hover:scale-102 m-3">
+        <Link href={'/'}>
+          <Image src={logo} alt="logo" height={65} width={65}></Image>
+        </Link>
+        <Link href={'/'}>
+          <p className="text-3xl normal-case font-extrabold ml-3" style={{ color: 'white', marginTop: '10%' }}>
+            Scraper
+          </p>
+        </Link>
+      </div>
     </div>
+
+    <div className="flex flex-grow justify-evenly max-w-sm" style={{ marginRight: '8%' }}>
+      <div className="flex flex-col items-start group ">
+        <h1 className="text-ml ml-2" style={{ color: 'black', fontSize: '160%', fontWeight:"bold" }}>
+          Scraped Categories
+        </h1>
+        <div className="flex flex-row">
+          {menuList.map((item) => {
+            return (
+              <div key={item.name}>
+                <Link className="transform" href={item.link}>
+                  <p
+                    className="m-2 cursor-pointer"
+                    style={{
+                      color: 'black',
+                    }}
+                  >
+                    {item.name}
+                  </p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+                </div>
+            </div>
+  </header>
     )
 }
 

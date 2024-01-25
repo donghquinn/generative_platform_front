@@ -4,7 +4,7 @@ import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
 
 import React from 'react';
-import { createTheme, MantineProvider } from '@mantine/core';
+import { createTheme, Divider, MantineProvider } from '@mantine/core';
 import { Metadata } from 'next';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -43,9 +43,14 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
       crossOrigin="anonymous"></Script>
       <RecoilRoot>
         <MantineProvider theme={theme}>
-        <Menu></Menu>
-        <Component {...pageProps}/>
+          <div color='white'>
+            <Menu></Menu>
+                      <Divider my="md" />
+            <Component {...pageProps} />
+                      <Divider my="md" />
           <Footer></Footer>
+          </div>
+
         </MantineProvider>
       </RecoilRoot>
     </>
