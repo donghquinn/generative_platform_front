@@ -19,3 +19,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.chatBubble {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.user {
+  background-color: #e6f7ff;
+}
+
+.bot {
+  background-color: #f0f0f0;
+}

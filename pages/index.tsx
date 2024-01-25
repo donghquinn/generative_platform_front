@@ -1,3 +1,4 @@
+import { Button } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 
@@ -5,10 +6,10 @@ import React from "react";
 function Home() {
     
     return (
-        <div>
+        <div style={{ marginBottom:"13%", marginTop:"13%"}}>
             <div className="flex flex-col space-y-2 px-2">
                 <div className="flex justify-center">
-                    <h1 style={{fontSize: "200%", marginTop:"25%", fontWeight: "bold"}}>Chat With chatGPT</h1>
+                    <h1 style={{fontSize: "200%",  marginBottom:"1%", fontWeight: "bold"}}>Chat With chatGPT</h1>
                 </div>
             </div>
 
@@ -21,10 +22,17 @@ function Home() {
             <div className="flex flex-col space-y-2 px-2">
                 <div className="flex justify-center">
                     <Link href={"/chat"}>
-                        <button className="btn btn-outline" style={{marginTop: "5%", marginRight: "3%"}} >Generate Chats</button>
+                        <Button
+                            variant="gradient"
+                            gradient={{ from: 'indigo', to: 'orange', deg: 90 }}
+                            >Generate Chats</Button>
                     </Link>
                     <Link href={"/generate"}>
-                        <button className="btn btn-outline btn-primary"style={{marginTop: "5%", marginLeft: "3%"}} >Generate Images</button>
+                        <Button
+                            variant="gradient"
+                            gradient={{ from: 'red', to: 'lime', deg: 90 }}
+                            style={{marginLeft: "2%"}}
+                            >Generate Images</Button>
                     </Link>
                 </div>
             </div>

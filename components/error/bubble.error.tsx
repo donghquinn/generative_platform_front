@@ -2,9 +2,7 @@
 function ErrorBubble({message, errMsg}) {
     return (
       <div>
-          <div className="chat chat-start">
-              <div className="chat-bubble">{message}</div>
-          </div>
+        <div className="user chatBubble">{message}</div>
           
           {errMsg.map((item) => {
               return (

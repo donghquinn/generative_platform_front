@@ -4,6 +4,7 @@ import { requestImg } from "../../../src/image/image.lib";
 import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../../../src/image/image.recoil";
 import ErrorBubble from "../../error/bubble.error";
 import ImageBubble from "./imgbubble";
+import { Button, TextInput } from "@mantine/core";
 
 // Send Image request and shows the response
 function SendImage({size, imgNumber}) {
@@ -53,7 +54,7 @@ function SendImage({size, imgNumber}) {
     if (sent) {
         return (
             <div>
-                <button className="btn loading">Waiting For chatGPT</button>
+               <Button loading loaderProps={{ type: 'dots' }}></Button>
             </div>
         )
     };
@@ -64,7 +65,10 @@ function SendImage({size, imgNumber}) {
             <div>
             <div>
                 <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                <button className="btn" style={{marginTop: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                <Button
+      variant="gradient"
+      gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+    onClick={(event) => {request()}}>보내기</Button>
             </div>
             <div>
                 <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
@@ -77,11 +81,22 @@ function SendImage({size, imgNumber}) {
         return (
             <div>
                 <div>
-                <div className="flex flex-col space-y-2 px-2">
+               <div className="flex flex-col space-y-2 px-2">
                     <div className="flex justify-center">
-                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                    <button className="btn" style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
-                    </div></div>
+                        <div style={{marginRight: "1%"}}>
+                            <TextInput
+                            placeholder="Image Prompt"
+                            onChange={onChange}
+                        />
+                            </div>
+                        <div>
+                        <Button
+                        variant="gradient"
+                        gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+                        onClick={(event) => {request()}}>보내기</Button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div style={{marginTop: "5%"}}>
                     <ImageBubble message={prompt} response={response}></ImageBubble>

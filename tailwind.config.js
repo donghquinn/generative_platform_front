@@ -10,7 +10,6 @@ module.exports = {
         header: "64px auto"
       }
     },
-  },
-  plugins: [require("daisyui")],
+  }
 }
 

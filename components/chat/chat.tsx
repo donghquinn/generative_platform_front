@@ -4,6 +4,7 @@ import { chatRequest } from "../../src/chat/chat.lib";
 import { errMsgRecoil, requestSuccess, responseRecoil } from "../../src/chat/chat.recoil";
 import ChatBubble from "./bubble";
 import ErrorBubble from "../error/bubble.error";
+import { Button, TextInput } from "@mantine/core";
 
 function SendChat({model}) {
     const [sent, setSent] = useState(false);
@@ -68,8 +69,19 @@ function SendChat({model}) {
             </div> */}
                 <div className="flex flex-col space-y-2 px-2">
                     <div className="flex justify-center">
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                        <button className="btn"style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
+                        <div style={{marginRight: "1%"}}>
+                            <TextInput
+                            placeholder="Chat Prompt"
+                            onChange={onChange}
+                        />
+                        </div>
+                        <div>
+                            <Button
+                                variant="gradient"
+                                gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+                                    onClick={( event ) => { request(); }}>보내기
+                            </Button>
+                        </div>
                     </div>
                 </div>
                 <div className="flex flex-col space-y-2 px-2">
@@ -83,20 +95,31 @@ function SendChat({model}) {
 
 
         return (
-            <div>
-                <div className="flex flex-col space-y-2 px-2">
-                    <div className="flex justify-center">
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" onChange={onChange}/>
-                        <button className="btn"style={{marginLeft: "2%"}} onClick={(event) => {request()}}>보내기</button>
+        <div>
+            <div className="flex flex-col space-y-2 px-2">
+                <div className="flex justify-center">
+                    <div style={{marginRight: "1%"}}>
+                        <TextInput
+                        placeholder="Chat Prompt"
+                        onChange={onChange}
+                    />
                     </div>
-                </div>
-                <div className="flex flex-col space-y-2 px-2" style={{marginTop: "3%"}}>
-                    <div className="flex justify-center">
-                        <ChatBubble message={prompt} response={response}></ChatBubble>
+                    <div>
+                        <Button
+                            variant="gradient"
+                            gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+                                onClick={( event ) => { request(); }}>보내기
+                        </Button>
                     </div>
                 </div>
             </div>
-        )
+            <div className="flex flex-col space-y-2 px-2" style={{marginTop: "3%"}}>
+                <div className="flex justify-center">
+                    <ChatBubble message={prompt} response={response}></ChatBubble>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default SendChat;
