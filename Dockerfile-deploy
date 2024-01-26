@@ -6,7 +6,8 @@ RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
-COPY yarn.lock package.json .yarnrc.yml /app/
+COPY yarn.lock .yarnrc.yml /app/
+COPY package-deploy.json ./package.json 
 COPY .yarn  /app/.yarn
 
 RUN yarn install
@@ -37,8 +38,10 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
+# COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./static
 
 USER nextjs
 # COPY ./public /home/node/standalone/public

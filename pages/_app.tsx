@@ -1,7 +1,7 @@
+import '../styles/global.css';
 import '@mantine/core/styles.css';
 import '@mantine/core/styles/Button.css';
 import '@mantine/core/styles/UnstyledButton.css';
-import '../styles/global.css';
 
 import { createTheme, Divider, MantineProvider } from '@mantine/core';
 import Head from 'next/head';
