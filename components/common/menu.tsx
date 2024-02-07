@@ -22,7 +22,7 @@ function Menu () {
         </Link>
         <Link href={'/'}>
           <p className="text-3xl normal-case font-extrabold ml-3" style={{ color: 'white', marginTop: '10%' }}>
-            Scraper
+            Gen Platforms
           </p>
         </Link>
       </div>
@@ -31,7 +31,7 @@ function Menu () {
     <div className="flex flex-grow justify-evenly max-w-sm" style={{ marginRight: '8%' }}>
       <div className="flex flex-col items-start group ">
         <h1 className="text-ml ml-2" style={{ color: 'black', fontSize: '160%', fontWeight:"bold" }}>
-          Scraped Categories
+          Generative Platforms
         </h1>
         <div className="flex flex-row">
           {menuList.map((item) => {

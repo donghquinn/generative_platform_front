@@ -20,7 +20,7 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
       <Head>
-        <title>donghquinn ChatGPT</title>
+        <title>Generative Platforms</title>
         <meta name='title' content='Generate Platform'/>
         <meta name='description' content='Generate Chat, Songs, Images, and etc...'/>
         <meta name='keywords' content='openai, chat, images, songs'/>
