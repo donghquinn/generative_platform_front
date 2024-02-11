@@ -17,19 +17,8 @@ function LoginComponent () {
   const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
 
   const router = useRouter();
-
-    // const validateForm = useForm({
-    // initialValues: {
-    //   email: "",
-    //   password: "",
-    // },
-    // validate: {
-    //     email: isEmail(),
-    //     password: hasLength( { min: 5, max: 12 } ),
-    // },
-    // } );
     
-      const onChangeEmail = (e) => {
+    const onChangeEmail = (e) => {
     setEmail(e.target.value)
   }
 

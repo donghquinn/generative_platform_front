@@ -2,7 +2,7 @@ import { MyPageDto } from "../types/user.type";
 
 export const getMyPageInfo = async ( email: string ) =>
 {
-    const url = process.env.MYPAGE_URL!;
+    const url = process.env.NEXT_PUBLIC_MYPAGE_URL!;
     const key = process.env.NEXT_PUBLIC_KEY!;
 
   const options = {

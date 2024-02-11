@@ -1,7 +1,7 @@
 import { LoginDto } from "../types/user.type";
 
 export const loginRequest = async (email: string, password: string) => {
-  const url = process.env.LOGIN_URL!;
+  const url = process.env.NEXT_PUBLIC_LOGIN_URL!;
   const key = process.env.NEXT_PUBLIC_KEY!;
   
   const options = {
