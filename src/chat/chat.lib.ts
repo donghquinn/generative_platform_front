@@ -41,7 +41,7 @@ export const chatRequest = async (
 ) => {
   // LLM's URL
   const url = process.env.NEXT_PUBLIC_CHAT_URL;
-  const adminAddress = process.env.ADMIN_ADDR;
+  const adminAddress = process.env.NEXT_PUBLIC_ADMIN_ADDR;
 
   const options = {
     headers: {

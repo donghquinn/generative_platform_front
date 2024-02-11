@@ -1,7 +1,7 @@
 import { SignupDto } from "../types/user.type";
 
 export const singupRequest = async (email: string, password: string, name: string) => {
-  const url = process.env.SIGNUP_URL!;
+  const url = process.env.NEXT_PUBLIC_SIGNUP_URL!;
   const key = process.env.NEXT_PUBLIC_KEY!;
   
   const options = {
