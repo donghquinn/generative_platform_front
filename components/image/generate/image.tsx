@@ -5,6 +5,7 @@ import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../
 import ErrorBubble from "../../error/bubble.error";
 import ImageBubble from "./imgbubble";
 import { Button, Loader, TextInput } from "@mantine/core";
+import { signinUserEmailRecoil } from "../../../src/recoil/login.recoil";
 
 // Send Image request and shows the response
 function SendImage({size, imgNumber}) {
@@ -21,13 +22,12 @@ function SendImage({size, imgNumber}) {
 
     const [ errors, setErrors ] = useState(false);
     const [errMsg, setErrmsg] = useRecoilState(imageErrMsgRecoil);
-    
+    const [ globalEmail, setGlobalEmail ] = useRecoilState( signinUserEmailRecoil );
+
     const request = async() => {
         setSent(true);
         // Request Image Generate
-        const imageResponse = await requestImg(prompt, imgNumber, size);
-
-        console.log(imageResponse.resCode);
+        const imageResponse = await requestImg(globalEmail, prompt, imgNumber, size);
         // console.log(response.dataRes[0].response);
 
         if (imageResponse.resCode === "200") {
@@ -65,26 +65,26 @@ function SendImage({size, imgNumber}) {
     if (errors) {
         return(
             <div>
- <div className="flex flex-col space-y-2 px-2">
+                <div className="flex flex-col space-y-2 px-2">
                     <div className="flex justify-center">
                         <div style={{marginRight: "1%"}}>
                             <TextInput
                             placeholder="Chat Prompt"
                             onChange={onChange}
                         />
-                        </div>
-                        <div>
-                            <Button
-                                variant="gradient"
-                                gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
-                                    onClick={( event ) => { request(); }}>보내기
-                            </Button>
-                        </div>
+                    </div>
+                    <div>
+                        <Button
+                            variant="gradient"
+                            gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+                                onClick={( event ) => { request(); }}>보내기
+                        </Button>
                     </div>
                 </div>
-                <div className="flex flex-col space-y-2 px-2">
-                    <div className="flex justify-center">
-                        <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
+            </div>
+            <div className="flex flex-col space-y-2 px-2">
+                <div className="flex justify-center">
+                    <ErrorBubble message={prompt} errMsg={errMsg} ></ErrorBubble>
                 </div>
             </div>
         </div>

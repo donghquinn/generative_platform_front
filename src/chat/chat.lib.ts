@@ -25,6 +25,7 @@ interface ResultArray {
  * @returns Model's Response
  */
 export const chatRequest = async (
+  email: string,
   model: string,
   content: string,
   number: string,
@@ -40,6 +41,7 @@ export const chatRequest = async (
 ) => {
   // LLM's URL
   const url = process.env.NEXT_PUBLIC_CHAT_URL;
+  const adminAddress = process.env.ADMIN_ADDR;
 
   const options = {
     headers: {
@@ -51,7 +53,10 @@ export const chatRequest = async (
     method: 'POST',
 
     // BODY Parameters
-    body: JSON.stringify({
+    body: JSON.stringify( {
+      email,
+      value: 1,
+      to: adminAddress,
       model,
       content,
       name,

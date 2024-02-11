@@ -5,6 +5,7 @@ import { errMsgRecoil, requestSuccess, responseRecoil } from "../../src/chat/cha
 import ChatBubble from "./bubble";
 import ErrorBubble from "../error/bubble.error";
 import { Button, Loader, TextInput } from "@mantine/core";
+import { signinUserEmailRecoil } from "../../src/recoil/login.recoil";
 
 function SendChat({model}) {
     const [sent, setSent] = useState(false);
@@ -15,12 +16,13 @@ function SendChat({model}) {
 
     const [ errors, setErrors ] = useState(false);
     const [errMsg, setErrmsg] = useRecoilState(errMsgRecoil);
-    
+      const [ globalEmail, setGlobalEmail ] = useRecoilState( signinUserEmailRecoil );
+
 
     const request = async() => {
         setSent(true);
 
-        const response = await chatRequest(model, prompt, "1");
+        const response = await chatRequest(globalEmail, model, prompt, "1");
 
         if (response.resCode === "200") {
             setSuccess(true);
