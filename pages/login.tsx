@@ -9,8 +9,7 @@ const LoginHome = () =>
     const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
     const router = useRouter();
     
-    if ( uuid.length > 5 )
-    {
+    if ( uuid.length > 5 ) {
         alert( "You are already Logined. Ignore." );
         router.push( "/mypage" );
     }
