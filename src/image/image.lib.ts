@@ -20,6 +20,7 @@ export interface ResultArray {
  * @returns Image Generator's Response.
  */
 export const requestImg = async (
+  email: string,
   prompt: string,
   number: string,
   size?: Sizes,
@@ -27,6 +28,7 @@ export const requestImg = async (
   user?: string,
 ) => {
   const url = process.env.NEXT_PUBLIC_IMAGE_URL;
+  const adminAddress = process.env.ADMIN_ADDR;
 
   const options = {
     headers: {
@@ -34,7 +36,10 @@ export const requestImg = async (
       key: process.env.NEXT_PUBLIC_KEY!,
     },
     method: 'POST',
-    body: JSON.stringify({
+    body: JSON.stringify( {
+      email,
+      value: 1,
+      to: adminAddress,
       prompt,
       number,
       size,
