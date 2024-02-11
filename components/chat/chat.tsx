@@ -4,7 +4,7 @@ import { chatRequest } from "../../src/chat/chat.lib";
 import { errMsgRecoil, requestSuccess, responseRecoil } from "../../src/chat/chat.recoil";
 import ChatBubble from "./bubble";
 import ErrorBubble from "../error/bubble.error";
-import { Button, TextInput } from "@mantine/core";
+import { Button, Loader, TextInput } from "@mantine/core";
 
 function SendChat({model}) {
     const [sent, setSent] = useState(false);
@@ -52,7 +52,7 @@ function SendChat({model}) {
         return (
       <div className="flex flex-col space-y-2 px-2">
                 <div className="flex justify-center">
-                    <Button loading loaderProps={{ type: 'dots' }}></Button>
+                    <Loader color='blue'></Loader>
                     </div>
             </div>
         )

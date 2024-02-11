@@ -433,6 +433,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/form@npm:^7.5.2":
+  version: 7.5.2
+  resolution: "@mantine/form@npm:7.5.2"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.3"
+    klona: "npm:^2.0.6"
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 8d0da39434e08d823a299a76058b17cf240288a039d505d1d5683165088b8405d2209804761f6cb0fcd68e286056fba4caf451c5c2df33e61f39fedad3c72a71
+  languageName: node
+  linkType: hard
+
 "@mantine/hooks@npm:^7.4.2":
   version: 7.4.2
   resolution: "@mantine/hooks@npm:7.4.2"
@@ -2472,6 +2484,7 @@ __metadata:
   resolution: "gpt-front@workspace:."
   dependencies:
     "@mantine/core": "npm:^7.4.2"
+    "@mantine/form": "npm:^7.5.2"
     "@mantine/hooks": "npm:^7.4.2"
     "@types/formidable": "npm:^2.0.6"
     "@types/multer": "npm:^1.4.11"
@@ -3077,6 +3090,13 @@ __metadata:
   dependencies:
     json-buffer: "npm:3.0.1"
   checksum: aa52f3c5e18e16bb6324876bb8b59dd02acf782a4b789c7b2ae21107fab95fab3890ed448d4f8dba80ce05391eeac4bfabb4f02a20221342982f806fa2cf271e
+  languageName: node
+  linkType: hard
+
+"klona@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "klona@npm:2.0.6"
+  checksum: 94eed2c6c2ce99f409df9186a96340558897b3e62a85afdc1ee39103954d2ebe1c1c4e9fe2b0952771771fa96d70055ede8b27962a7021406374fdb695fd4d01
   languageName: node
   linkType: hard
 

@@ -4,7 +4,7 @@ import { requestImg } from "../../../src/image/image.lib";
 import { imageErrMsgRecoil, imageRequestSuccess, imageResponseRecoil } from "../../../src/image/image.recoil";
 import ErrorBubble from "../../error/bubble.error";
 import ImageBubble from "./imgbubble";
-import { Button, TextInput } from "@mantine/core";
+import { Button, Loader, TextInput } from "@mantine/core";
 
 // Send Image request and shows the response
 function SendImage({size, imgNumber}) {
@@ -55,7 +55,7 @@ function SendImage({size, imgNumber}) {
         return (
       <div className="flex flex-col space-y-2 px-2">
                 <div className="flex justify-center">
-                    <Button loading loaderProps={{ type: 'dots' }}></Button>
+                    <Loader color='blue'></Loader>
                     </div>
             </div>
         )
