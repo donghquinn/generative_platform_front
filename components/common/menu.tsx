@@ -7,12 +7,14 @@ import { signinUserUuidRecoil } from "../../src/recoil/login.recoil";
 // Menu Component
 // const menuList = ["Chat", "Image", "Edit", "Song","S-R"];
 const menuList = [
+      { name: "About", link: "/about" },
     { name: "Chat", link: "/chat" },
     { name: "Image", link: "/generate" },
     { name: "Login", link: "/login" }
 ];
 
 const signedMenu = [
+      { name: "About", link: "/about" },
    { name: "Chat", link: "/chat" },
   { name: "Image", link: "/generate" },
     {name: "MyPage", link: "/mypage"},
@@ -67,7 +69,7 @@ function Menu () {
   </header>
     )
   }
-  
+
     return (
   <header className="flex flex-col sm:flex-row justify-between items-center" style={{ backgroundColor: 'white' }}>
     <div className="navbar-start relative" style={{ marginLeft: '5%' }}>
