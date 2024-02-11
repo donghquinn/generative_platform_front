@@ -1,4 +1,6 @@
-export const signinRequest = async (email: string, password: string) => {
+import { LoginDto } from "../types/user.type";
+
+export const loginRequest = async (email: string, password: string) => {
   const url = process.env.SIGNIN_URL!;
 
   const options = {
@@ -9,7 +11,7 @@ export const signinRequest = async (email: string, password: string) => {
     body: JSON.stringify({ email, password }),
   };
 
-  const response = await (await fetch(url, options)).json();
+  const response = await (await fetch(url, options)).json() as LoginDto;
 
   return response;
 };
