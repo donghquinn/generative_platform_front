@@ -4,12 +4,14 @@ services:
     image: ${REGISTRY_URL}
     # build:
     #   context: .
-    #   dockerfile: ./Dockerfile
+    #   dockerfile: ./Dockerfile-deploy
     container_name: gpt-front
     env_file:
       - .env
     expose:
       - 3000
+    # ports:
+    #   - 3000:3000
     restart: unless-stopped
     networks:
       - proxy

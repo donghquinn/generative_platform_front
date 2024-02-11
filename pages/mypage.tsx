@@ -1,34 +1,65 @@
+import { Alert, Grid, Table } from "@mantine/core";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { signinUserEmailRecoil, signinUserUuidRecoil } from "../src/recoil/login.recoil";
-import { getMyPageInfo } from "../src/user/mypage.lib";
-import { useRouter } from "next/router";
-import { use, useState } from "react";
-import { MyPageDataResAccount, MyPageDataResAccountTransaction } from "../src/types/user.type";
+import { MyPageDataResAccount } from "../src/types/user.type";
 import { logoutRequest } from "../src/user/logout.lib";
-import { Grid, Table } from "@mantine/core";
+import { getMyPageInfo } from "../src/user/mypage.lib";
 
 const MyPageHome = () =>
 {
     const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
-    const router = useRouter();
-    
-    if ( uuid.length < 1 )
-    {
-        alert( "Login First Please." );
-        router.push( "/login" );
-    }
 
-    const [ resCode, setResCode ] = useState( "200" );
+        const [ resCode, setResCode ] = useState( "200" );
   const [ globalEmail, setGlobalEmail ] = useRecoilState( signinUserEmailRecoil );
 
     const [ address, setAddress ] = useState( "" );
     const [ networkInfo, setNetworkInfo ] = useState( "" );
     const [ name, setName ] = useState( "" );
-    const [ profileImage, setProfileImage ] = useState("");
-
+    const [ profileImage, setProfileImage ] = useState( "" );
     const [ accountInfo, setAccount ] = useState<Array<MyPageDataResAccount>>();
-    // const [ txInfo, setTx ] = useState<Array<MyPageDataResAccountTransaction>>();
-  const accountRows = (
+    const dataFetchedRef = useRef( false );
+
+    const requestMyPage = async () => {
+        const response = await getMyPageInfo( globalEmail );
+
+        setResCode( response.resCode );
+
+        if ( resCode !== "200" ) {
+            alert( "Failed to load my page info. please Login Again." );
+            await logoutRequest( uuid );
+            setUuid( "" );
+        }
+        if ( resCode === "200" ) {
+            const { account, name, profileImage } = response.dataRes;
+            setProfileImage( profileImage );
+            setName( name );
+
+            setAccount( response.dataRes.account );
+        }
+    }
+
+    useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    
+    requestMyPage();
+    }, [globalEmail] );
+    
+    if ( uuid.length < 1 )
+    {
+        return (
+            <div>
+                <Alert variant="light" color="red" title="Alert title">
+                    Generate Chat Error. Please Login First.
+                </Alert>
+                <Link href="/login">Confirm</Link>
+            </div>
+        )
+    } else
+    {
+         const accountRows = (
     <Table.Tr>
           <Table.Th>Address</Table.Th>
           <Table.Th>Network</Table.Th>
@@ -51,25 +82,9 @@ const MyPageHome = () =>
     </Table.Tr>
     )
 
-    const requestMyPage = async () => {
-        const response = await getMyPageInfo( globalEmail );
+    
 
-        setResCode( response.resCode );
-
-        if ( resCode !== "200" ) {
-            alert( "Failed to load my page info. please Login Again." );
-            await logoutRequest( uuid );
-            setUuid( "" );
-        }
-        if ( resCode === "200" ) {
-            const { account, name, profileImage } = response.dataRes;
-            setProfileImage( profileImage );
-            setName( name );
-
-            setAccount( response.dataRes.account );
-        }
-    }
-
+  
     return (
         <div>
             <div>
@@ -122,6 +137,9 @@ const MyPageHome = () =>
         </Grid>
     </div>
     )
+    }
+    // const [ txInfo, setTx ] = useState<Array<MyPageDataResAccountTransaction>>();
+ 
 };
 
 export default MyPageHome;

@@ -1,32 +1,39 @@
+import { Alert, Select } from "@mantine/core";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useState } from "react";
-import { Sizes } from "../src/types/image.type";
-import { Select } from "@mantine/core";
-import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { signinUserUuidRecoil } from "../src/recoil/login.recoil";
+import { Sizes } from "../src/types/image.type";
 
 // Image Generate Page
 function Img ()
 {
     const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
-    const router = useRouter();
-    
-    if ( uuid.length < 1 )
-    {
-        alert( "Login First Please." );
-        router.push( "/login" );
-    }
-
-    const SendImage = dynamic( () => import( "../components/image/generate/image" ) );
-
- // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
- const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];
+     const sizeArray: Array<Sizes> = ["256x256", "512x512", "1024x1024"];
  const imgNumberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
  const [size, setSize] = useState("256x256");
 
- const [imgNumber, setNumber] = useState("1");
+    const [ imgNumber, setNumber ] = useState( "1" );
+
+    
+    if ( uuid.length < 1 ) {
+        
+        return (
+            <div>
+                <Alert variant="light" color="red" title="Alert title">
+                    Generate Chat Error. Please Login First.
+                </Alert>
+                <Link href="/login">Confirm</Link>
+            </div>
+        )
+    } else
+    {
+        const SendImage = dynamic( () => import( "../components/image/generate/image" ) );
+
+ // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];
+
  
  return (
      <div>
@@ -64,6 +71,9 @@ function Img ()
          </div>
      </div>
     )
+    }
+
+    
 }
 
 export default Img;

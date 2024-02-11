@@ -10,10 +10,11 @@ export const loginRequest = async (email: string, password: string) => {
       key,
     },
     method: 'POST',
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify( { email, password } ),
   };
 
   const response = await (await fetch(url, options)).json() as LoginDto;
 
   return response;
 };
+''

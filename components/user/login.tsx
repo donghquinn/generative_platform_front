@@ -12,22 +12,22 @@ function LoginComponent () {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
   const [ resCode, setResCode ] = useState( "200" );
-  
+
   const [ globalEmail, setGlobalEmail ] = useRecoilState( signinUserEmailRecoil );
   const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
 
   const router = useRouter();
 
-    const validateForm = useForm({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validate: {
-        email: isEmail(),
-        password: hasLength( { min: 5, max: 12 } ),
-    },
-    } );
+    // const validateForm = useForm({
+    // initialValues: {
+    //   email: "",
+    //   password: "",
+    // },
+    // validate: {
+    //     email: isEmail(),
+    //     password: hasLength( { min: 5, max: 12 } ),
+    // },
+    // } );
     
       const onChangeEmail = (e) => {
     setEmail(e.target.value)
@@ -50,8 +50,7 @@ function LoginComponent () {
         router.push("/")
       }
     }
-      console.log( "Email: %o", {email} );
-      console.log( "Password: %o", { password } );
+
     return (
       <>
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -73,8 +72,8 @@ function LoginComponent () {
           <Card.Section component="a" href="https://mantine.dev/" />
           
           <Fieldset legend="Login">
-            <TextInput label="Email" placeholder="Email" onChange={onChangeEmail} {...validateForm.getInputProps("email")} />
-            <PasswordInput label="Password" placeholder="Password" mt="md" onChange={onChangePassword} {...validateForm.getInputProps( "password" )} />
+            <TextInput label="Email" placeholder="Email" onChange={onChangeEmail}  />
+            <PasswordInput label="Password" placeholder="Password" mt="md" onChange={onChangePassword}  />
 
             <Group justify="flex-end" mt="md">
                 <Link href="/signin">Click to Signin</Link>
