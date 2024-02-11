@@ -52,4 +52,5 @@ export interface MyPageDataResAccountTransaction
     txHash: string;
     usage: string;
     status: string;
+    created: Date;
 }

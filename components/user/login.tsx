@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { signinUserEmailRecoil, signinUserUuidRecoil } from "../../src/recoil/login.recoil";
 import { hasLength, isEmail, useForm } from "@mantine/form";
-import { Button, Card, Fieldset, Group, PasswordInput, TextInput } from "@mantine/core";
+import { Button, Card, Fieldset, Group, PasswordInput, TextInput, em } from "@mantine/core";
 import Link from "next/link";
 import { loginRequest } from "../../src/user/login.lib";
 import { useRouter } from "next/router";
 
 // Not Completed Components
-function LoginComponent ()
-{
-  const [ email, setEmail ] = useState<string>();
-  const [ password, setPassword ] = useState<string>();
+function LoginComponent () {
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
   const [ resCode, setResCode ] = useState( "200" );
+  
   const [ globalEmail, setGlobalEmail ] = useRecoilState( signinUserEmailRecoil );
   const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
 
@@ -20,7 +20,7 @@ function LoginComponent ()
 
     const validateForm = useForm({
     initialValues: {
-      email: '',
+      email: "",
       password: "",
     },
     validate: {
@@ -43,15 +43,15 @@ function LoginComponent ()
 
       setResCode( response.resCode );
 
-      if ( resCode === "200" )
-      {
+      if ( resCode === "200" ) {
         alert( "Login Success" );
         setGlobalEmail( email );
         setUuid( response.dataRes.result );
         router.push("/")
       }
     }
-    
+      console.log( "Email: %o", {email} );
+      console.log( "Password: %o", { password } );
     return (
       <>
         <Card shadow="sm" padding="lg" radius="md" withBorder>

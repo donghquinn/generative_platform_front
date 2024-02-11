@@ -1,10 +1,22 @@
 import { Select } from "@mantine/core";
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import { signinUserUuidRecoil } from "../src/recoil/login.recoil";
+import { useRecoilState } from "recoil";
+import { useRouter } from "next/router";
 
 // Chat page
 function Chat ()
 {
+    const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
+    const router = useRouter();
+    
+    if ( uuid.length < 1 )
+    {
+        alert( "Login First Please." );
+        router.push( "/login" );
+    }
+
     const SendChat = dynamic( () => import( "../components/chat/chat" ) );
     
     // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];

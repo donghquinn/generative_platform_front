@@ -2,10 +2,22 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Sizes } from "../src/types/image.type";
 import { Select } from "@mantine/core";
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { signinUserUuidRecoil } from "../src/recoil/login.recoil";
 
 // Image Generate Page
 function Img ()
 {
+    const [ uuid, setUuid ] = useRecoilState( signinUserUuidRecoil );
+    const router = useRouter();
+    
+    if ( uuid.length < 1 )
+    {
+        alert( "Login First Please." );
+        router.push( "/login" );
+    }
+
     const SendImage = dynamic( () => import( "../components/image/generate/image" ) );
 
  // const modelArray = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"];

@@ -12,6 +12,6 @@ export const signinUserUuidRecoil = atom({
 } );
 
 export const signinUserEmailRecoil = atom({
-  key: 'signinUserEmailRecoil',
+  key: 'globalEmailKey',
   default: "",
 });
