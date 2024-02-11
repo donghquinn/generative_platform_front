@@ -1,4 +1,4 @@
-import { Alert, Button, Card, Fieldset, Group, PasswordInput, TextInput } from "@mantine/core";
+import { Alert, Button, Card, Fieldset, Group, Overlay, PasswordInput, TextInput, Text } from "@mantine/core";
 import { hasLength, isEmail, matchesField, useForm } from "@mantine/form";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -11,55 +11,54 @@ function SignUp()
     const [ password, setPassword ] = useState<string>();
     const [ name, setName ] = useState<string>();
     const [ resCode, setResCode ] = useState( "200" );
-
+    const visible = true;
     const router = useRouter();
 
-      const validateForm = useForm({
-    initialValues: {
-              email: '',
+    const validateForm = useForm({
+      initialValues: {
+        email: '',
         name: "",
-      password: "",
-      confirmPassword: '',
-    },
+        password: "",
+        confirmPassword: '',
+      },
 
-    validate: {
-    email: isEmail(),
-    name: hasLength({min: 1, max: 12}),
-      password: hasLength( { min: 5, max: 12 } ),
-      confirmPassword: matchesField(
-        "password",
-        "Passwords are not same"
-      )
-    },
-      } );
+      validate: {
+      email: isEmail(),
+      name: hasLength({min: 1, max: 12}),
+        password: hasLength( { min: 5, max: 12 } ),
+        confirmPassword: matchesField(
+          "password",
+          "Passwords are not same"
+        )
+      },
+    } );
     
-    const onChangePassword = ( e ) =>
-    {
+    const onChangePassword = ( e ) => {
         setPassword( e.target.value );
     }
 
-        const onChangeEmail = ( e ) =>
-    {
-        setEmail( e.target.value );
-        }
-    
-        const onChangeName = ( e ) =>
-    {
-        setName( e.target.value );
-        }
-    
-    const signup = async () =>
-    {
-        const response = await singupRequest( email, password, name );
+    const onChangeEmail = ( e ) => {
+      setEmail( e.target.value );
+    }
 
-        setResCode( response.resCode );
+    const onChangeName = ( e ) => {
+      setName( e.target.value );
+    }
 
-        if ( resCode === "200" )
-        {
-            alert( "Signup Success" );
+    const signup = async () => {
+      const response = await singupRequest( email, password, name );
 
-            router.push("/")
-        }
+      setResCode( response.resCode );
+
+      if ( resCode === "200" ) {
+          alert( "Signup Success" );
+
+          router.push( "/" );
+        } else {
+        // Handle other response codes if needed
+        // For example, display an error message
+        alert(`Signup Failed with response code: ${response.resCode}`);
+      }
     }
 
 
@@ -75,7 +74,7 @@ function SignUp()
     <>
       <Card shadow="sm" padding="lg" radius="md" withBorder>
 
-          {/* {visible &&
+          {visible &&
             <Overlay color="#000" backgroundOpacity={0.85}>
              <div className="flex flex-col space-y-2 px-2 mt-5">
             <div className="flex flex-row justify-center">
@@ -87,7 +86,7 @@ function SignUp()
                             </div>
               </div>
             </Overlay>
-        } */}
+        }
         
         <Card.Section component="a" href="https://mantine.dev/" />
 
